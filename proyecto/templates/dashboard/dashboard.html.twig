@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RegisterController!{% endblock %}
+
+{% block body %}
+
+    <p>Items list from {{ app.user }}</p>
+
+    <table>
+
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Done</th>
+            <th>CreatedAt</th>
+        </tr>
+
+        {% for item in items %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.title }}</td>
+                {% if item.done == 1 %}
+                    <td>Yes</td>
+                {% else %}
+                    <td>No</td>
+                {% endif %}
+                <td> {{ item.createdAt | date('Y-m-d')}}</td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+    <br>
+    <a href="{{ path('new-item') }}">New Item</a>
+    <br>
+    <a href="{{ path('app_logout') }}">LogOut</a>
+
+{% endblock %}

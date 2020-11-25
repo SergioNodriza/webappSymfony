@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RegisterController!{% endblock %}
+
+{% block body %}
+
+    {{ form(formRegister) }}
+
+    <br>
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {% for message in app.flashes('fail') %}
+        <div class="alert alert-fail">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <br>
+    <a href="{{ path('app_login') }}">LogIn</a>
+
+{% endblock %}
