@@ -10,6 +10,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Item
 {
+    const ITEM_OK = 'Item added';
+    const ITEM_FAIL = 'Error adding item';
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

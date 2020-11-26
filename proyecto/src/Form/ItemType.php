@@ -20,7 +20,7 @@ class ItemType extends AbstractType
             ->add('done', CheckboxType::class, [
                 'required' => false,
             ])
-            ->add('Insertar', SubmitType::class)
+            ->add('insert', SubmitType::class)
         ;
     }
 

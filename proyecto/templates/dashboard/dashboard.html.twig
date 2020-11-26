@@ -1,12 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello RegisterController!{% endblock %}
+{% block title %}Dashboard{% endblock %}
 
 {% block body %}
 
-    <p>Items list from {{ app.user }}</p>
+    <div class="center">
+        <h1 class="h3 mb-3 font-weight-normal">Items list from {{ app.user }}</h1>
+    </div>
 
-    <table>
+    <table class="center">
 
         <tr>
             <th>Id</th>
@@ -24,15 +26,13 @@
                 {% else %}
                     <td>No</td>
                 {% endif %}
-                <td> {{ item.createdAt | date('Y-m-d')}}</td>
+                <td> {{ item.createdAt | date('Y-m-d h-i-s')}}</td>
             </tr>
         {% endfor %}
 
     </table>
 
-    <br>
-    <a href="{{ path('new-item') }}">New Item</a>
-    <br>
-    <a href="{{ path('app_logout') }}">LogOut</a>
+    <p><input type="button" onclick="location.href='{{ path('new-item') }}'" value="New Item">
+    <input type="button" onclick="location.href='{{ path('app_logout') }}'" value="LogOut"></p>
 
 {% endblock %}

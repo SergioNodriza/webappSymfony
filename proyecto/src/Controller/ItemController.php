@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Item;
-use App\Entity\User;
 use App\Form\ItemType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -27,15 +26,15 @@ class ItemController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            /** @var User  $user */
-            $user = $this->getUser();
-
-            $item->setUser($user);
-
-            $entityManager->persist($item);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('new-item');
+            try {
+                $user = $this->getUser();
+                $item->setUser($user);
+                $entityManager->persist($item);
+                $entityManager->flush();
+                $this->addFlash('success', Item::ITEM_OK);
+            } catch (\Exception $e) {
+                $this->addFlash('fail', Item::ITEM_FAIL);
+            }
         }
 
         return $this->render('item/new-item.html.twig', [

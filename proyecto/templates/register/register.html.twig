@@ -1,26 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello RegisterController!{% endblock %}
+{% block title %}Register{% endblock %}
 
 {% block body %}
 
-    {{ form(formRegister) }}
+    <div class="center">
+        <h1 class="h3 mb-3 font-weight-normal">Register</h1>
 
-    <br>
+        {{ form_start(formRegister) }}
+        <span class="inline">{{ form_row(formRegister.name) }}</span>
+        <span class="inline">{{ form_row(formRegister.password) }}</span>
+        <span class="inline">{{ form_row(formRegister.register) }}</span>
+        {{ form_end(formRegister) }}
 
     {% for message in app.flashes('success') %}
         <div class="alert alert-success">
+            <br>
             {{ message }}
         </div>
     {% endfor %}
 
     {% for message in app.flashes('fail') %}
         <div class="alert alert-fail">
+            <br>
             {{ message }}
         </div>
     {% endfor %}
 
-    <br>
-    <a href="{{ path('app_login') }}">LogIn</a>
+    </div>
+
+    <p><input type="button" onclick="location.href='{{ path('app_login') }}'" value="LogIn"></p>
 
 {% endblock %}

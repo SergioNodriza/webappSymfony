@@ -1,18 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ItemController!{% endblock %}
+{% block title %}New Item{% endblock %}
 
 {% block body %}
 
-    {% for message in app.flashes('success') %}
-        <div class="alert alert-success">
-            {{ message }}
-        </div>
-    {% endfor %}
+    <div class="center">
+        <h1 class="h3 mb-3 font-weight-normal">Add Items</h1>
 
-    {{ form(formNewItem) }}
+        {{ form_start(formNewItem) }}
+            <span class="inline">{{ form_row(formNewItem.title) }}</span>
+            <span class="inline">{{ form_row(formNewItem.done) }}</span>
+            <span class="inline">{{ form_row(formNewItem.insert) }}</span>
+        {{ form_end(formNewItem) }}
 
-    <br>
-    <a href="{{ path('dashboard') }}">Volver</a>
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                <br>
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        {% for message in app.flashes('fail') %}
+            <div class="alert alert-fail">
+                <br>
+                {{ message }}
+            </div>
+        {% endfor %}
+
+    </div>
+
+    <p><input type="button" onclick="location.href='{{ path('dashboard') }}'" value="Dashboard"></p>
 
 {% endblock %}

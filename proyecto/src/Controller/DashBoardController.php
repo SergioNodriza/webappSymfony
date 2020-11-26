@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Controller;
 
 use App\Repository\ItemRepository;
@@ -12,6 +11,7 @@ class DashBoardController extends AbstractController
 {
     /**
      * @Route("/dashboard", name="dashboard")
+     * @Route("/", name="inicio")
      * @param ItemRepository $itemRepository
      * @return Response
      */
