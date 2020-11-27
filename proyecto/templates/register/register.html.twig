@@ -4,31 +4,46 @@
 
 {% block body %}
 
-    <div class="center">
+    <div class="centerText">
+
         <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+        <hr class="black">
+        <br>
 
-        {{ form_start(formRegister) }}
-        <span class="inline">{{ form_row(formRegister.name) }}</span>
-        <span class="inline">{{ form_row(formRegister.password) }}</span>
-        <span class="inline">{{ form_row(formRegister.register) }}</span>
-        {{ form_end(formRegister) }}
+        <div class="formFields">
+            {{ form_start(formRegister) }}
 
-    {% for message in app.flashes('success') %}
-        <div class="alert alert-success">
-            <br>
-            {{ message }}
+            {{ form_label(formRegister.name) }}
+            {{ form_widget(formRegister.name) }}
+
+            <br><br>
+
+            {{ form_label(formRegister.password) }}
+            {{ form_widget(formRegister.password) }}
+
+            <br><br>
+
+            <div class="formSubmit">{{ form_row(formRegister.register) }}</div>
+            {{ form_end(formRegister) }}
         </div>
-    {% endfor %}
 
-    {% for message in app.flashes('fail') %}
-        <div class="alert alert-fail">
-            <br>
-            {{ message }}
-        </div>
-    {% endfor %}
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                <br>
+                <h3>
+                    {{ message }}
+                </h3>
+            </div>
+        {% endfor %}
 
+        {% for message in app.flashes('fail') %}
+            <div class="alert alert-fail">
+                <br>
+                <h3>
+                    {{ message }}
+                </h3>
+            </div>
+        {% endfor %}
     </div>
-
-    <p><input type="button" onclick="location.href='{{ path('app_login') }}'" value="LogIn"></p>
 
 {% endblock %}

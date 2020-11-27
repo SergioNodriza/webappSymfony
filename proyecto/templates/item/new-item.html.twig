@@ -1,34 +1,50 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseLogged.html.twig' %}
 
 {% block title %}New Item{% endblock %}
 
 {% block body %}
 
-    <div class="center">
-        <h1 class="h3 mb-3 font-weight-normal">Add Items</h1>
+    <div class="centerText">
 
-        {{ form_start(formNewItem) }}
-            <span class="inline">{{ form_row(formNewItem.title) }}</span>
-            <span class="inline">{{ form_row(formNewItem.done) }}</span>
-            <span class="inline">{{ form_row(formNewItem.insert) }}</span>
-        {{ form_end(formNewItem) }}
+        <h1 class="centerText">Add a New Item</h1>
+        <hr class="black">
+        <br>
+
+        <div class="formFields">
+            {{ form_start(formNewItem) }}
+
+            {{ form_label(formNewItem.title) }}
+            {{ form_widget(formNewItem.title) }}
+
+            <br><br>
+
+            {{ form_label(formNewItem.done) }}
+            {{ form_widget(formNewItem.done) }}
+
+            <br><br>
+
+            <div class="formSubmit">{{ form_row(formNewItem.insert) }}</div>
+            {{ form_end(formNewItem) }}
+        </div>
 
         {% for message in app.flashes('success') %}
             <div class="alert alert-success">
                 <br>
-                {{ message }}
+                <h3>
+                    {{ message }}
+                </h3>
             </div>
         {% endfor %}
 
         {% for message in app.flashes('fail') %}
             <div class="alert alert-fail">
                 <br>
-                {{ message }}
+                <h3>
+                    {{ message }}
+                </h3>
             </div>
         {% endfor %}
 
     </div>
-
-    <p><input type="button" onclick="location.href='{{ path('dashboard') }}'" value="Dashboard"></p>
 
 {% endblock %}

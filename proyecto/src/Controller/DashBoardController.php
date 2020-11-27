@@ -24,4 +24,23 @@ class DashBoardController extends AbstractController
             'items' => $items,
         ]);
     }
+
+    /**
+     * @Route("/headerLogged", name="headerLogged")
+     * @return Response
+     */
+    public function header(): Response
+    {
+        return $this->render('header/headerLogged.html.twig', [
+        ]);
+    }
+    /**
+     * @Route("/header", name="header")
+     * @return Response
+     */
+    public function headerLogged(): Response
+    {
+        return $this->render('header/header.html.twig', [
+        ]);
+    }
 }

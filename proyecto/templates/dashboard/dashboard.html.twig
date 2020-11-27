@@ -1,14 +1,17 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseLogged.html.twig' %}
 
 {% block title %}Dashboard{% endblock %}
 
 {% block body %}
 
-    <div class="center">
-        <h1 class="h3 mb-3 font-weight-normal">Items list from {{ app.user }}</h1>
+    <div class="centerText">
+    <h1>Items list from {{ app.user }}</h1>
     </div>
 
-    <table class="center">
+    <hr class="black">
+    <br>
+
+    <table>
 
         <tr>
             <th>Id</th>
@@ -31,8 +34,5 @@
         {% endfor %}
 
     </table>
-
-    <p><input type="button" onclick="location.href='{{ path('new-item') }}'" value="New Item">
-    <input type="button" onclick="location.href='{{ path('app_logout') }}'" value="LogOut"></p>
 
 {% endblock %}

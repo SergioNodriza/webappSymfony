@@ -9,13 +9,13 @@
     </head>
     <body>
 
-         {{ render(path('header')) }}
+         {{ render(path('headerLogged')) }}
 
         {% block body %}{% endblock %}
 
         {% block javascripts %}
-            <script src="{{ asset('js/active.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('js/activeLogged.js') }}" type="text/javascript"></script>
         {% endblock %}
-
+    
     </body>
 </html>

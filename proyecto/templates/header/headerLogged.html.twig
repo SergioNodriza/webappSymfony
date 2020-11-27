@@ -1,0 +1,13 @@
+{% block header %}
+    <div class="header">
+        <h1>Web-App</h1>
+    </div>
+
+    <div class="navbar">
+        <a href="{{ path('inicio') }}" class="active" id="toList">List</a>
+        <a href="{{ path('new-item') }}" id="toNew">New</a>
+        <a href="#">Update</a>
+        <a href="#">Delete</a>
+        <a href="{{ path('app_logout') }}" class="right">LogOut</a>
+    </div>
+{% endblock %}

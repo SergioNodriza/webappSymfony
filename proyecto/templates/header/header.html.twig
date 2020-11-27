@@ -1,0 +1,10 @@
+{% block header %}
+    <div class="header">
+        <h1>Web-App</h1>
+    </div>
+
+    <div class="navbar">
+        <a href="{{ path('app_login') }}" class="right active" id="toLogin">LogIn</a>
+        <a href="{{ path('register') }}" id="toRegister">Register</a>
+    </div>
+{% endblock %}
