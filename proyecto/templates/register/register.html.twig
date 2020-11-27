@@ -10,20 +10,22 @@
         <hr class="black">
         <br>
 
-        <div class="formFields">
+        <div class="inlineLeft">
             {{ form_start(formRegister) }}
 
             {{ form_label(formRegister.name) }}
+            <hr>
             {{ form_widget(formRegister.name) }}
 
             <br><br>
 
             {{ form_label(formRegister.password) }}
+            <hr>
             {{ form_widget(formRegister.password) }}
 
             <br><br>
 
-            <div class="formSubmit">{{ form_row(formRegister.register) }}</div>
+            <div class="inlineRight ">{{ form_row(formRegister.register) }}</div>
             {{ form_end(formRegister) }}
         </div>
 

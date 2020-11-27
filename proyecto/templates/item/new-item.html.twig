@@ -10,20 +10,18 @@
         <hr class="black">
         <br>
 
-        <div class="formFields">
+        <div class="inlineLeft">
             {{ form_start(formNewItem) }}
 
             {{ form_label(formNewItem.title) }}
+            <hr>
             {{ form_widget(formNewItem.title) }}
 
             <br><br>
 
-            {{ form_label(formNewItem.done) }}
-            {{ form_widget(formNewItem.done) }}
+            <div class="inlineBlock">{{ form_row(formNewItem.done) }}</div>
+            <div class="inlineRight">{{ form_row(formNewItem.insert) }}</div>
 
-            <br><br>
-
-            <div class="formSubmit">{{ form_row(formNewItem.insert) }}</div>
             {{ form_end(formNewItem) }}
         </div>
 

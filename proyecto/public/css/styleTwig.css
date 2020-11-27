@@ -2,6 +2,8 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     background-color: #898e8d;
+    color: white;
+    font-weight: bold;
 }
 
 table {
@@ -10,6 +12,7 @@ table {
     margin-left: auto;
     margin-right: auto;
     border-collapse: collapse;
+    color: black;
 }
 
 table, td, th {
@@ -44,7 +47,7 @@ a {
     margin-left: auto;
     margin-right: auto;
     padding: 10px;
-    background: #137752;
+    background: #085c3d;
     color: white;
     font-size: 30px;
 }
@@ -71,7 +74,6 @@ a {
     color: white;
     text-align: center;
     padding: 15px 15px;
-    text-decoration: none;
 }
 
 .navbar a.right {
@@ -88,11 +90,29 @@ a {
     color: white;
 }
 
-div.formFields {
+div.inlineLeft {
     display: inline-block;
     text-align: left;
 }
 
-div.formSubmit {
+div.inlineRight {
+    display: inline-block;
+    float: right;
     text-align: right;
+}
+
+div.inlineBlock {
+    display: inline-block;
+}
+
+button {
+    border: none;
+    border-radius: 8px;
+    color: white;
+    padding: 3px 25px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #333;
 }

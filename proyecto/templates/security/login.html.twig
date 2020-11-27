@@ -4,23 +4,28 @@
 
 {% block body %}
     <div class="centerText">
-        <form method="post" class="center">
+        <form method="post" autocomplete="off">
 
             <h1>LogIn</h1>
             <hr class="black">
             <br>
 
-            <div class="formFields">
+            <div class="inlineLeft">
                 <label for="inputName">Name</label>
+                <hr>
                 <input type="text" value="{{ last_username }}" name="name" id="inputName" class="form-control" required autofocus>
+
                 <br><br>
-                <label for="inputPassword">Pass</label>
+
+                <label for="inputPassword">Password</label>
+                <hr>
                 <input type="password" name="password" id="inputPassword" class="form-control" required>
+
                 <br><br>
+
                 <input type="hidden" name="_csrf_token"
                        value="{{ csrf_token('authenticate') }}"
                 >
-
 
                 {#
                     Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
@@ -33,7 +38,7 @@
                     </div>
                 #}
 
-                <div class="formSubmit"><button class="btn btn-lg btn-primary" type="submit">LogIn </button></div>
+                <div class="inlineRight"><button class="btn btn-lg btn-primary" type="submit">LogIn </button></div>
             </div>
 
             {% if app.user %}
