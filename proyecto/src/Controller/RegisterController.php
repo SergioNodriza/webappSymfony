@@ -4,8 +4,8 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Model\Register;
 use Doctrine\ORM\EntityManagerInterface;
-use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,14 +14,21 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class RegisterController extends AbstractController
 {
+
+    private Register $register;
+
+    public function __construct(Register $register)
+    {
+        $this->register = $register;
+    }
+
     /**
      * @Route("/register", name="register")
      * @param Request $request
-     * @param EntityManagerInterface $entityManager
      * @param UserPasswordEncoderInterface $userPasswordEncoder
      * @return Response
      */
-    public function index(Request $request, EntityManagerInterface $entityManager, UserPasswordEncoderInterface $userPasswordEncoder): Response
+    public function index(Request $request, UserPasswordEncoderInterface $userPasswordEncoder): Response
     {
         //$this->denyAccessUnlessGranted('IS_ANONYMOUS');
 
@@ -31,14 +38,14 @@ class RegisterController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            try {
-                $user->setPassword($userPasswordEncoder->encodePassword($user, $form['password']->getData()));
-                $name = $user->getName();
-                $entityManager->persist($user);
-                $entityManager->flush();
+            $user->setPassword($userPasswordEncoder->encodePassword($user, $form['password']->getData()));
+            $name = $user->getName();
+            $result = $this->register->register($user);
+
+            if ($result) {
                 $this->addFlash('success', User::REGISTER_OK);
                 return $this->redirect('/login/' . $name);
-            } catch (Exception $e) {
+            } else {
                 $this->addFlash('fail', User::REGISTER_FAIL);
                 return $this->redirectToRoute("register");
             }
