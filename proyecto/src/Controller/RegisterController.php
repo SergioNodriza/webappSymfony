@@ -39,6 +39,7 @@ class RegisterController extends AbstractController
                 return $this->redirect('/login/' . $name);
             } catch (\Exception $e) {
                 $this->addFlash('fail', User::REGISTER_FAIL);
+                return $this->redirectToRoute("register");
             }
         }
 

@@ -1,0 +1,64 @@
+{% extends 'baseLogged.html.twig' %}
+
+{% block title %}Update Item{% endblock %}
+
+{% block body %}
+
+    <div class="centerText">
+        <h1>Update this Item</h1>
+    </div>
+
+    <hr class="black">
+    <br>
+
+    <table>
+
+        <tr>
+            <th>Title</th>
+            <th>Done</th>
+            <th>CreatedAt</th>
+        </tr>
+
+        <tr>
+            <td>{{ item.title }}</td>
+            {% if item.done == 1 %}
+                <td>Yes</td>
+            {% else %}
+                <td>No</td>
+            {% endif %}
+            <td> {{ item.createdAt | date('Y-m-d h-i-s')}}</td>
+        </tr>
+
+    </table>
+
+    <div class="centerText">
+
+        <br><br>
+
+        <div class="inlineLeft">
+            {{ form_start(formUpdate) }}
+
+            {{ form_label(formUpdate.title) }}
+            <hr>
+            {{ form_widget(formUpdate.title) }}
+
+            <br><br>
+
+            <div class="inlineBlock">{{ form_row(formUpdate.done) }}</div>
+            <div class="inlineRight">{{ form_row(formUpdate.insert) }}</div>
+
+            {{ form_end(formUpdate) }}
+        </div>
+
+        {% for message in app.flashes('fail') %}
+            <div class="alert alert-fail">
+                <br>
+                <h3>
+                    {{ message }}
+                </h3>
+            </div>
+        {% endfor %}
+
+    </div>
+
+{% endblock %}

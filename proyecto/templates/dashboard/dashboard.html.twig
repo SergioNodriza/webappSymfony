@@ -14,7 +14,6 @@
     <table>
 
         <tr>
-            <th>Id</th>
             <th>Title</th>
             <th>Done</th>
             <th>CreatedAt</th>
@@ -22,7 +21,6 @@
 
         {% for item in items %}
             <tr>
-                <td>{{ item.id }}</td>
                 <td>{{ item.title }}</td>
                 {% if item.done == 1 %}
                     <td>Yes</td>

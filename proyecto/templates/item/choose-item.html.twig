@@ -1,0 +1,34 @@
+{% extends 'baseLogged.html.twig' %}
+
+{% block title %}Choose Item{% endblock %}
+
+{% block body %}
+
+    <div class="centerText">
+
+        <h1 class="centerText">Choose a Item</h1>
+        <hr class="black">
+        <br>
+
+        <form method="post" action="{{ path('update-item') }}">
+
+            <div class="inlineLeft">
+                <label for="item">List of Items</label>
+                <select name="item" id="item">
+
+                    {% for item in items %}
+                        <option value="{{ item.id }}">{{ item.title }}</option>
+                    {% endfor %}
+
+                </select>
+
+                <br><br>
+
+                <div class="inlineLeft"><button type="submit">LogIn </button></div>
+            </div>
+
+        </form>
+
+    </div>
+
+{% endblock %}

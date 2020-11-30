@@ -38,6 +38,7 @@ final class Version20201125105853 extends AbstractMigration
                                 ) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
 
         $this->addSql('ALTER TABLE item ADD CONSTRAINT FK_1F1B251EA76ED395 FOREIGN KEY (user_id) REFERENCES user (id)');
+        $this->addSql('ALTER TABLE item ADD CONSTRAINT unique_title_user UNIQUE (title, user_id);');
     }
 
     public function down(Schema $schema) : void

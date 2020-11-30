@@ -4,7 +4,14 @@
     </div>
 
     <div class="navbar">
-        <a href="{{ path('app_login') }}" class="right active" id="toLogin">LogIn</a>
-        <a href="{{ path('register') }}" id="toRegister">Register</a>
+
+        {% if app.request.get('_route') == "app_login"%}
+            <a href="{{ path('app_login') }}" class="right active" id="toLogin">LogIn</a>
+            <a href="{{ path('register') }}" id="toRegister">Register</a>
+        {% else %}
+            <a href="{{ path('app_login') }}" class="right">LogIn</a>
+            <a href="{{ path('register') }}" class="active">Register</a>
+        {% endif %}
+
     </div>
 {% endblock %}
