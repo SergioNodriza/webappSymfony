@@ -1,6 +1,6 @@
 {% extends 'baseLogged.html.twig' %}
 
-{% block title %}Dashboard{% endblock %}
+{% block title %}List{% endblock %}
 
 {% block body %}
 
@@ -27,7 +27,7 @@
                 {% else %}
                     <td>No</td>
                 {% endif %}
-                <td> {{ item.createdAt | date('Y-m-d h-i-s')}}</td>
+                <td> {{ item.createdAt | date('Y-m-d h:i:s')}}</td>
             </tr>
         {% endfor %}
 

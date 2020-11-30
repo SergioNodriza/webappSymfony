@@ -1,6 +1,12 @@
 {% extends 'baseLogged.html.twig' %}
 
-{% block title %}Choose Item{% endblock %}
+{% block title %}
+    {% if action == 'update' %}
+        Update Item
+    {% elseif action == 'delete' %}
+        Delete Item
+    {% endif %}
+{% endblock %}
 
 {% block body %}
 
