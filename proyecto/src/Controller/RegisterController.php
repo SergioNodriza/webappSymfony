@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use Doctrine\ORM\EntityManagerInterface;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -37,7 +38,7 @@ class RegisterController extends AbstractController
                 $entityManager->flush();
                 $this->addFlash('success', User::REGISTER_OK);
                 return $this->redirect('/login/' . $name);
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 $this->addFlash('fail', User::REGISTER_FAIL);
                 return $this->redirectToRoute("register");
             }

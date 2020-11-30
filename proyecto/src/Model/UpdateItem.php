@@ -4,6 +4,8 @@ namespace App\Model;
 
 use App\Entity\Item;
 use Doctrine\ORM\EntityManagerInterface;
+use Exception;
+
 class UpdateItem
 {
     private EntityManagerInterface $entityManager;
@@ -23,7 +25,7 @@ class UpdateItem
             $this->entityManager->persist($item);
             $this->entityManager->flush();
             return true;
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             return false;
         }
     }

@@ -4,6 +4,7 @@ namespace App\Model;
 
 use App\Entity\Item;
 use Doctrine\ORM\EntityManagerInterface;
+use Exception;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 class NewItem
@@ -29,7 +30,7 @@ class NewItem
             $this->entityManager->flush();
             return true;
 
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
 
             return false;
         }

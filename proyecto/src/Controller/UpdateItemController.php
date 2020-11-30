@@ -36,16 +36,15 @@ class UpdateItemController extends AbstractController
             $id = $_POST['item'];
             return $this->redirect("/update-item/" . $id);
 
-        } else {
-
-            $user = $this->getUser();
-            $items = $this->listItem->listItemByUser($user);
-
-            return $this->render('item/choose-item.html.twig', [
-                'items' => $items,
-                'action' => 'update'
-            ]);
         }
+
+        $user = $this->getUser();
+        $items = $this->listItem->listItemByUser($user);
+
+        return $this->render('item/choose-item.html.twig', [
+            'items' => $items,
+            'action' => 'update'
+        ]);
     }
 
 

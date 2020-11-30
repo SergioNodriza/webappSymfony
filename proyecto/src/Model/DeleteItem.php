@@ -4,6 +4,7 @@ namespace App\Model;
 
 use App\Entity\Item;
 use Doctrine\ORM\EntityManagerInterface;
+use Exception;
 
 class DeleteItem
 {
@@ -24,7 +25,7 @@ class DeleteItem
             $this->entityManager->remove($item);
             $this->entityManager->flush();
             return true;
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             return false;
         }
     }

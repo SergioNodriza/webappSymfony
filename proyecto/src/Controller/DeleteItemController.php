@@ -5,8 +5,6 @@ namespace App\Controller;
 use App\Entity\Item;
 use App\Model\DeleteItem;
 use App\Model\ListItem;
-use App\Repository\ItemRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,19 +24,42 @@ class DeleteItemController extends AbstractController
     /**
      * @Route("/delete", name="delete-item")
      * @param Request $request
-     * @param ItemRepository $itemRepository
-     * @param EntityManagerInterface $entityManager
      * @return Response
      */
-    public function delete(Request $request, ItemRepository $itemRepository, EntityManagerInterface $entityManager): Response
+    public function delete(Request $request): Response
     {
-        $user = $this->getUser();
-        $items = $this->listItem->listItemByUser($user);
 
         if ($request->isMethod('POST')) {
 
             $id = $_POST['item'];
-            $item = $this->listItem->listItemByUserAndId($user, $id);
+            return $this->redirect("/delete-item/" . $id);
+        }
+
+        $user = $this->getUser();
+        $items = $this->listItem->listItemByUser($user);
+
+        return $this->render('item/choose-item.html.twig', [
+            'items' => $items,
+            'action' => 'delete'
+        ]);
+    }
+
+    /**
+     * @Route("/delete-item/{id}", name="delete-item-id")
+     * @param string $id
+     * @param Request $request
+     * @return Response
+     */
+    public function deleteItem(string $id, Request $request)
+    {
+        $user = $this->getUser();
+        $item = $this->listItem->listItemByUserAndId($user, $id);
+
+        if ($item == null) {
+            $this->denyAccessUnlessGranted('ROLE_ADMIN');
+        }
+
+        if ($request->isMethod('POST')) {
 
             $result = $this->deleteItem->deleteItem($item);
 
@@ -47,13 +68,12 @@ class DeleteItemController extends AbstractController
                 return $this->redirectToRoute('delete-item');
             } else {
                 $this->addFlash('fail', Item::ITEM_FAIL);
-                return $this->redirectToRoute('delete-item');
+                return $this->redirectToRoute('delete-item-id');
             }
         }
 
-        return $this->render('item/choose-item.html.twig', [
-            'items' => $items,
-            'action' => 'delete'
+        return $this->render('item/delete-item.html.twig', [
+            'item' => $item
         ]);
     }
 }
