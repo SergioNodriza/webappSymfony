@@ -84,6 +84,7 @@ class ItemController extends AbstractController
 
             return $this->render('item/choose-item.html.twig', [
                 'items' => $items,
+                'action' => 'update'
             ]);
         }
     }
@@ -114,7 +115,7 @@ class ItemController extends AbstractController
 
                 $entityManager->persist($item);
                 $entityManager->flush();
-                $this->addFlash('success', Item::ITEM_OK);
+                $this->addFlash('success', Item::ITEM_UPDATED);
                 return $this->redirect("/update-item/" . $id);
             } catch (\Exception $e) {
                 $this->addFlash('fail', Item::ITEM_FAIL);
@@ -128,8 +129,37 @@ class ItemController extends AbstractController
         ]);
     }
 
-    public function delete()
+    /**
+     * @Route("/delete", name="delete-item")
+     * @param Request $request
+     * @param ItemRepository $itemRepository
+     * @param EntityManagerInterface $entityManager
+     * @return Response
+     */
+    public function delete(Request $request, ItemRepository $itemRepository, EntityManagerInterface $entityManager): Response
     {
+        $user = $this->getUser();
+        $items = $itemRepository->findBy(['user' => $user]);
 
+        if ($request->isMethod('POST')) {
+
+            $id = $_POST['item'];
+            $item = $itemRepository->findOneBy(["id" => $id, "user" => $user]);
+
+            try {
+                $entityManager->remove($item);
+                $entityManager->flush();
+                $this->addFlash('success', Item::ITEM_DELETED);
+                return $this->redirectToRoute('delete-item');
+            } catch (\Exception $exception) {
+                $this->addFlash('fail', Item::ITEM_FAIL);
+                return $this->redirectToRoute('delete-item');
+            }
+        }
+
+        return $this->render('item/choose-item.html.twig', [
+            'items' => $items,
+            'action' => 'delete'
+        ]);
     }
 }

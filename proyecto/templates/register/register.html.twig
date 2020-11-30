@@ -28,24 +28,6 @@
             <div class="inlineRight ">{{ form_row(formRegister.register) }}</div>
             {{ form_end(formRegister) }}
         </div>
-
-        {% for message in app.flashes('success') %}
-            <div class="alert alert-success">
-                <br>
-                <h3>
-                    {{ message }}
-                </h3>
-            </div>
-        {% endfor %}
-
-        {% for message in app.flashes('fail') %}
-            <div class="alert alert-fail">
-                <br>
-                <h3>
-                    {{ message }}
-                </h3>
-            </div>
-        {% endfor %}
     </div>
 
 {% endblock %}

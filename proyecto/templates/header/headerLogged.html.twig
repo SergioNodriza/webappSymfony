@@ -12,7 +12,7 @@
             <a href="{{ path('inicio') }}">List</a>
             <a href="{{ path('new-item') }}" class="active">New</a>
             <a href="{{ path('update-item') }}">Update</a>
-            <a href="#">Delete</a>
+            <a href="{{ path('delete-item') }}">Delete</a>
             <a href="{{ path('app_logout') }}" class="right">LogOut</a>
 
         {% elseif route == 'update-item' or route == 'update-item-id'%}
@@ -20,15 +20,15 @@
             <a href="{{ path('inicio') }}">List</a>
             <a href="{{ path('new-item') }}">New</a>
             <a href="{{ path('update-item') }}" class="active">Update</a>
-            <a href="#">Delete</a>
+            <a href="{{ path('delete-item') }}">Delete</a>
             <a href="{{ path('app_logout') }}" class="right">LogOut</a>
 
-        {% elseif route == 'delete-item' %}
+        {% elseif route == 'delete-item' or route == 'delete-item-id' %}
 
             <a href="{{ path('inicio') }}">List</a>
             <a href="{{ path('new-item') }}">New</a>
             <a href="{{ path('update-item') }}">Update</a>
-            <a href="#" class="active">Delete</a>
+            <a href="{{ path('delete-item') }}" class="active">Delete</a>
             <a href="{{ path('app_logout') }}" class="right">LogOut</a>
 
         {% elseif route == 'inicio'%}
@@ -36,7 +36,7 @@
             <a href="{{ path('inicio') }}" class="active">List</a>
             <a href="{{ path('new-item') }}">New</a>
             <a href="{{ path('update-item') }}">Update</a>
-            <a href="#">Delete</a>
+            <a href="{{ path('delete-item') }}">Delete</a>
             <a href="{{ path('app_logout') }}" class="right">LogOut</a>
 
         {% endif %}

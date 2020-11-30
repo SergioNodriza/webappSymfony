@@ -50,15 +50,6 @@
             {{ form_end(formUpdate) }}
         </div>
 
-        {% for message in app.flashes('fail') %}
-            <div class="alert alert-fail">
-                <br>
-                <h3>
-                    {{ message }}
-                </h3>
-            </div>
-        {% endfor %}
-
     </div>
 
 {% endblock %}

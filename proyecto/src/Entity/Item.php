@@ -11,7 +11,9 @@ use Doctrine\ORM\Mapping as ORM;
 class Item
 {
     const ITEM_OK = 'Item added';
-    const ITEM_FAIL = 'Error adding item';
+    const ITEM_UPDATED = 'Item updated';
+    const ITEM_DELETED = 'Item deleted';
+    const ITEM_FAIL = 'Error in this item operation';
 
     /**
      * @ORM\Id
@@ -36,7 +38,7 @@ class Item
     private $createdAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="items", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="items", cascade={"persist"})
      */
     private $user;
 

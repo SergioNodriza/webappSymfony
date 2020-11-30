@@ -12,11 +12,11 @@
 
     <body>
 
-        {% set current_path = app.request.get('_route') %}
-
         {% block body %}{% endblock %}
 
         {% block javascripts %}{% endblock %}
+
+        {% include 'errorFlash/errorFlash.html.twig' %}
 
     </body>
 </html>

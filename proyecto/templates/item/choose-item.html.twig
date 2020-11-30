@@ -6,28 +6,42 @@
 
     <div class="centerText">
 
-        <h1 class="centerText">Choose a Item</h1>
+        <h1 class="centerText">Choose a Item to {{ action }}</h1>
         <hr class="black">
         <br>
 
-        <form method="post" action="{{ path('update-item') }}">
+        {% if items|length == 0 %}
 
-            <div class="inlineLeft">
-                <label for="item">List of Items</label>
-                <select name="item" id="item">
+            <h3>There are no items for {{ app.user }}, add <a href="{{ path('new-item') }}">some</a></h3>
 
-                    {% for item in items %}
-                        <option value="{{ item.id }}">{{ item.title }}</option>
-                    {% endfor %}
+        {% else %}
 
-                </select>
+            <form method="post" action="
+            {% if action == 'update' %}
+                {{ path('update-item') }}
+            {% elseif action == 'delete' %}
+               {{ path('delete-item') }}
+            {% endif %}
+        ">
 
-                <br><br>
+                <div class="inlineLeft">
+                    <label for="item">List of Items</label>
+                    <select name="item" id="item">
 
-                <div class="inlineLeft"><button type="submit">LogIn </button></div>
-            </div>
+                        {% for item in items %}
+                            <option value="{{ item.id }}">{{ item.title }}</option>
+                        {% endfor %}
 
-        </form>
+                    </select>
+
+                    <br><br>
+
+                    <div class="inlineLeft"><button type="submit">{{ action|capitalize }}</button></div>
+                </div>
+
+            </form>
+
+        {% endif %}
 
     </div>
 
