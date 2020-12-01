@@ -18,12 +18,15 @@ class ListItemController extends AbstractController
     }
 
     /**
-     * @Route("/list-item", name="list-item")
      * @Route("/", name="inicio")
+     * @Route("/{_locale<%app.supported_locales%>}", name="inicioLocale")
      * @return Response
      */
     public function list(): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
+        if ($_SERVER['REQUEST_URI'] == "/") return $this->redirectToRoute("inicioLocale");
+
         $user = $this->getUser();
         $items = $this->listItem->listItemByUser($user);
 

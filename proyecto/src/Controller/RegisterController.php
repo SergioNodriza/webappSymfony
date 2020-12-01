@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Model\Register;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,14 +22,16 @@ class RegisterController extends AbstractController
     }
 
     /**
-     * @Route("/register", name="register")
+     * @Route("/{_locale<%app.supported_locales%>}/register", name="register")
      * @param Request $request
      * @param UserPasswordEncoderInterface $userPasswordEncoder
      * @return Response
      */
     public function index(Request $request, UserPasswordEncoderInterface $userPasswordEncoder): Response
     {
-        //$this->denyAccessUnlessGranted('IS_ANONYMOUS');
+        if ($this->isGranted("ROLE_USER")) {
+            return $this->redirectToRoute("app_login");
+        }
 
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -44,7 +45,7 @@ class RegisterController extends AbstractController
 
             if ($result) {
                 $this->addFlash('success', User::REGISTER_OK);
-                return $this->redirect('/login/' . $name);
+                return $this->redirect('/{_locale}/login/' . $name);
             } else {
                 $this->addFlash('fail', User::REGISTER_FAIL);
                 return $this->redirectToRoute("register");

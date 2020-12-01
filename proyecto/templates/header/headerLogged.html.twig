@@ -9,35 +9,71 @@
 
         {% if route == 'new-item' %}
 
-            <a href="{{ path('inicio') }}">List</a>
-            <a href="{{ path('new-item') }}" class="active">New</a>
-            <a href="{{ path('update-item') }}">Update</a>
-            <a href="{{ path('delete-item') }}">Delete</a>
-            <a href="{{ path('app_logout') }}" class="right">LogOut</a>
+            <a href="{{ path('inicioLocale') }}">{{ 'List'|trans }}</a>
+            <a href="{{ path('new-item') }}" class="active">{{ 'New'|trans }}</a>
+            <a href="{{ path('update-item') }}">{{ 'Update'|trans }}</a>
+            <a href="{{ path('delete-item') }}">{{ 'Delete'|trans }}</a>
+            <a href="{{ path('app_logout') }}" class="right">{{ 'LogOut'|trans }}</a>
+            {% if app.request.locale == 'en'%}
+                <a class="right" style="visibility: hidden">LogIn</a>
+                <a href="{{ path('inicioLocale', {_locale: 'en'}) }}" class="right active" id="toEN">EN</a>
+                <a href="{{ path('inicioLocale', {_locale: 'es'}) }}" class="right" id="toEN">ES</a>
+            {% else %}
+                <a class="right" style="visibility: hidden">{{ 'LogIn'|trans }}</a>
+                <a href="{{ path('inicioLocale', {_locale: 'en'}) }}" class="right" id="toEN">EN</a>
+                <a href="{{ path('inicioLocale', {_locale: 'es'}) }}" class="right active" id="toEN">ES</a>
+            {% endif %}
 
         {% elseif route == 'update-item' or route == 'update-item-id'%}
 
-            <a href="{{ path('inicio') }}">List</a>
-            <a href="{{ path('new-item') }}">New</a>
-            <a href="{{ path('update-item') }}" class="active">Update</a>
-            <a href="{{ path('delete-item') }}">Delete</a>
-            <a href="{{ path('app_logout') }}" class="right">LogOut</a>
+            <a href="{{ path('inicioLocale') }}">{{ 'List'|trans }}</a>
+            <a href="{{ path('new-item') }}">{{ 'New'|trans }}</a>
+            <a href="{{ path('update-item') }}" class="active">{{ 'Update'|trans }}</a>
+            <a href="{{ path('delete-item') }}">{{ 'Delete'|trans }}</a>
+            <a href="{{ path('app_logout') }}" class="right">{{ 'LogOut'|trans }}</a>
+            {% if app.request.locale == 'en'%}
+                <a class="right" style="visibility: hidden">LogIn</a>
+                <a href="{{ path('inicioLocale', {_locale: 'en'}) }}" class="right active" id="toEN">EN</a>
+                <a href="{{ path('inicioLocale', {_locale: 'es'}) }}" class="right" id="toEN">ES</a>
+            {% else %}
+                <a class="right" style="visibility: hidden">{{ 'LogIn'|trans }}</a>
+                <a href="{{ path('inicioLocale', {_locale: 'en'}) }}" class="right" id="toEN">EN</a>
+                <a href="{{ path('inicioLocale', {_locale: 'es'}) }}" class="right active" id="toEN">ES</a>
+            {% endif %}
 
         {% elseif route == 'delete-item' or route == 'delete-item-id' %}
 
-            <a href="{{ path('inicio') }}">List</a>
-            <a href="{{ path('new-item') }}">New</a>
-            <a href="{{ path('update-item') }}">Update</a>
-            <a href="{{ path('delete-item') }}" class="active">Delete</a>
-            <a href="{{ path('app_logout') }}" class="right">LogOut</a>
+            <a href="{{ path('inicioLocale') }}">{{ 'List'|trans }}</a>
+            <a href="{{ path('new-item') }}">{{ 'New'|trans }}</a>
+            <a href="{{ path('update-item') }}">{{ 'Update'|trans }}</a>
+            <a href="{{ path('delete-item') }}" class="active">{{ 'Delete'|trans }}</a>
+            <a href="{{ path('app_logout') }}" class="right">{{ 'LogOut'|trans }}</a>
+            {% if app.request.locale == 'en'%}
+                <a class="right" style="visibility: hidden">LogIn</a>
+                <a href="{{ path('inicioLocale', {_locale: 'en'}) }}" class="right active" id="toEN">EN</a>
+                <a href="{{ path('inicioLocale', {_locale: 'es'}) }}" class="right" id="toEN">ES</a>
+            {% else %}
+                <a class="right" style="visibility: hidden">{{ 'LogIn'|trans }}</a>
+                <a href="{{ path('inicioLocale', {_locale: 'en'}) }}" class="right" id="toEN">EN</a>
+                <a href="{{ path('inicioLocale', {_locale: 'es'}) }}" class="right active" id="toEN">ES</a>
+            {% endif %}
 
-        {% elseif route == 'inicio'%}
+        {% elseif route == 'inicio' or route == "inicioLocale"%}
 
-            <a href="{{ path('inicio') }}" class="active">List</a>
-            <a href="{{ path('new-item') }}">New</a>
-            <a href="{{ path('update-item') }}">Update</a>
-            <a href="{{ path('delete-item') }}">Delete</a>
-            <a href="{{ path('app_logout') }}" class="right">LogOut</a>
+            <a href="{{ path('inicioLocale') }}" class="active">{{ 'List'|trans }}</a>
+            <a href="{{ path('new-item') }}">{{ 'New'|trans }}</a>
+            <a href="{{ path('update-item') }}">{{ 'Update'|trans }}</a>
+            <a href="{{ path('delete-item') }}">{{ 'Delete'|trans }}</a>
+            <a href="{{ path('app_logout') }}" class="right">{{ 'LogOut'|trans }}</a>
+            {% if app.request.locale == 'en'%}
+                <a class="right" style="visibility: hidden">LogIn</a>
+                <a href="{{ path('inicioLocale', {_locale: 'en'}) }}" class="right active" id="toEN">EN</a>
+                <a href="{{ path('inicioLocale', {_locale: 'es'}) }}" class="right" id="toEN">ES</a>
+            {% else %}
+                <a class="right" style="visibility: hidden">{{ 'LogIn'|trans }}</a>
+                <a href="{{ path('inicioLocale', {_locale: 'en'}) }}" class="right" id="toEN">EN</a>
+                <a href="{{ path('inicioLocale', {_locale: 'es'}) }}" class="right active" id="toEN">ES</a>
+            {% endif %}
 
         {% endif %}
 

@@ -24,7 +24,7 @@ class UpdateItemController extends AbstractController
 
 
     /**
-     * @Route("/update-item", name="update-item")
+     * @Route("/{_locale<%app.supported_locales%>}/update-item", name="update-item")
      * @param Request $request
      * @return Response
      */
@@ -34,7 +34,7 @@ class UpdateItemController extends AbstractController
         if ($request->isMethod('POST')) {
 
             $id = $_POST['item'];
-            return $this->redirect("/update-item/" . $id);
+            return $this->redirectToRoute("update-item-id", ['id' => $id]);
 
         }
 
@@ -49,7 +49,7 @@ class UpdateItemController extends AbstractController
 
 
     /**
-     * @Route("/update-item/{id}", name="update-item-id")
+     * @Route("/{_locale<%app.supported_locales%>}/update-item/{id}", name="update-item-id")
      * @param string $id
      * @param Request $request
      * @return Response

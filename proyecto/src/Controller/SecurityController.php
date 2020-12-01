@@ -11,7 +11,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SecurityController extends AbstractController
 {
     /**
-     * @Route("/login/{new}", name="app_login")
+     * @Route("/{_locale<%app.supported_locales%>}/login/{new}", name="app_login")
      * @param AuthenticationUtils $authenticationUtils
      * @param string|null $new
      * @return Response
@@ -31,7 +31,7 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/logout", name="app_logout")
+     * @Route("/{_locale<%app.supported_locales%>}/logout", name="app_logout")
      */
     public function logout()
     {

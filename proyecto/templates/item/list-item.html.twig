@@ -1,11 +1,11 @@
 {% extends 'baseLogged.html.twig' %}
 
-{% block title %}List{% endblock %}
+{% block title %}{{ 'List'|trans }}{% endblock %}
 
 {% block body %}
 
     <div class="centerText">
-    <h1>Items list from {{ app.user }}</h1>
+    <h1>{{ 'Items list from'|trans }} {{ app.user }}</h1>
     </div>
 
     <hr class="black">
@@ -14,16 +14,16 @@
     <table>
 
         <tr>
-            <th>Title</th>
-            <th>Done</th>
-            <th>CreatedAt</th>
+            <th>{{ 'Title'|trans }}</th>
+            <th>{{ 'Done'|trans }}</th>
+            <th>{{ 'CreatedAt'|trans }}</th>
         </tr>
 
         {% for item in items %}
             <tr>
                 <td>{{ item.title }}</td>
                 {% if item.done == 1 %}
-                    <td>Yes</td>
+                    <td>{{ 'Yes'|trans }}</td>
                 {% else %}
                     <td>No</td>
                 {% endif %}

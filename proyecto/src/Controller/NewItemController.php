@@ -20,7 +20,7 @@ class NewItemController extends AbstractController
     }
 
     /**
-     * @Route("/new-item", name="new-item")
+     * @Route("/{_locale<%app.supported_locales%>}/new-item", name="new-item")
      * @param Request $request
      * @return Response
      */

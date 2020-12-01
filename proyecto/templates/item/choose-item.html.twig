@@ -2,9 +2,9 @@
 
 {% block title %}
     {% if action == 'update' %}
-        Update Item
+        {{ 'Update Item'|trans }}
     {% elseif action == 'delete' %}
-        Delete Item
+        {{ 'Delete Item'|trans }}
     {% endif %}
 {% endblock %}
 
@@ -12,13 +12,17 @@
 
     <div class="centerText">
 
-        <h1 class="centerText">Choose a Item to {{ action }}</h1>
+        {% if action == 'update' %}
+            <h1 class="centerText">{{ 'Choose a Item to'|trans }} {{ 'Update'|trans }}</h1>
+        {% else %}
+            <h1 class="centerText">{{ 'Choose a Item to'|trans }} {{ 'Delete'|trans }}</h1>
+        {% endif %}
         <hr class="black">
         <br>
 
         {% if items|length == 0 %}
 
-            <h3>There are no items for {{ app.user }}, add <a href="{{ path('new-item') }}">some</a></h3>
+            <h3>{{ 'There are no items for'|trans }} {{ app.user }}, add <a href="{{ path('new-item') }}">some</a></h3>
 
         {% else %}
 
@@ -31,7 +35,7 @@
         ">
 
                 <div class="inlineLeft">
-                    <label for="item">List of Items</label>
+                    <label for="item">{{ 'List of Items'|trans }}</label>
                     <select name="item" id="item">
 
                         {% for item in items %}
@@ -42,7 +46,11 @@
 
                     <br><br>
 
-                    <div class="inlineLeft"><button type="submit">{{ action|capitalize }}</button></div>
+                    {% if action == 'update' %}
+                        <div class="inlineLeft"><button type="submit">{{ 'Update'|trans }}</button></div>
+                    {% else %}
+                        <div class="inlineLeft"><button type="submit">{{ 'Delete'|trans }}</button></div>
+                    {% endif %}
                 </div>
 
             </form>

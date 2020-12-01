@@ -22,7 +22,7 @@ class DeleteItemController extends AbstractController
     }
 
     /**
-     * @Route("/delete", name="delete-item")
+     * @Route("/{_locale<%app.supported_locales%>}/delete", name="delete-item")
      * @param Request $request
      * @return Response
      */
@@ -32,7 +32,7 @@ class DeleteItemController extends AbstractController
         if ($request->isMethod('POST')) {
 
             $id = $_POST['item'];
-            return $this->redirect("/delete-item/" . $id);
+            return $this->redirectToRoute("delete-item-id", ['id' => $id]);
         }
 
         $user = $this->getUser();
@@ -45,7 +45,7 @@ class DeleteItemController extends AbstractController
     }
 
     /**
-     * @Route("/delete-item/{id}", name="delete-item-id")
+     * @Route("/{_locale<%app.supported_locales%>}/delete-item/{id}", name="delete-item-id")
      * @param string $id
      * @param Request $request
      * @return Response

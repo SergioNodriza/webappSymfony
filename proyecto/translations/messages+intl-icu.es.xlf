@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="es" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="u3I07BJ" resname="Register">
+        <source>Register</source>
+        <target>Registrarse</target>
+      </trans-unit>
+      <trans-unit id="byAvVKe" resname="List">
+        <source>List</source>
+        <target>Listar</target>
+      </trans-unit>
+      <trans-unit id="GP3VSbL" resname="New">
+        <source>New</source>
+        <target>Nuevo</target>
+      </trans-unit>
+      <trans-unit id="wcEAnT8" resname="Update">
+        <source>Update</source>
+        <target>Actualizar</target>
+      </trans-unit>
+      <trans-unit id="4tClSWj" resname="Delete">
+        <source>Delete</source>
+        <target>Eliminar</target>
+      </trans-unit>
+      <trans-unit id="ogCBNm6" resname="LogOut">
+        <source>LogOut</source>
+        <target>Cerrar Sesión</target>
+      </trans-unit>
+      <trans-unit id="w_j6PjP" resname="LogIn">
+        <source>LogIn</source>
+        <target>Iniciar Sesión</target>
+      </trans-unit>
+      <trans-unit id="3NHVIj9" resname="Name">
+        <source>Name</source>
+        <target>Nombre</target>
+      </trans-unit>
+      <trans-unit id="588_9PF" resname="Password">
+        <source>Password</source>
+        <target>Contraseña</target>
+      </trans-unit>
+      <trans-unit id="acVpEs4" resname="You are logged in as">
+        <source>You are logged in as</source>
+        <target>Estás registrado como</target>
+      </trans-unit>
+      <trans-unit id=".Pw4KRV" resname="Delete Item">
+        <source>Delete Item</source>
+        <target>Eliminar Objeto</target>
+      </trans-unit>
+      <trans-unit id="4PwBLBn" resname="Delete this Item">
+        <source>Delete this Item</source>
+        <target>Eliminar este Objeto</target>
+      </trans-unit>
+      <trans-unit id="fozSBW2" resname="Title">
+        <source>Title</source>
+        <target>Titulo</target>
+      </trans-unit>
+      <trans-unit id="EaZ2fVZ" resname="Done">
+        <source>Done</source>
+        <target>Hecho</target>
+      </trans-unit>
+      <trans-unit id="_NU_9fk" resname="CreatedAt">
+        <source>CreatedAt</source>
+        <target>Fecha Creación</target>
+      </trans-unit>
+      <trans-unit id="haOas0X" resname="Yes">
+        <source>Yes</source>
+        <target>Si</target>
+      </trans-unit>
+      <trans-unit id="awlyjTR" resname="New Item">
+        <source>New Item</source>
+        <target>Nuevo Objeto</target>
+      </trans-unit>
+      <trans-unit id="6ddz.17" resname="Add a New Item">
+        <source>Add a New Item</source>
+        <target>Añadir un nuevo objeto</target>
+      </trans-unit>
+      <trans-unit id="SDXSTPv" resname="Items list from">
+        <source>Items list from</source>
+        <target>Objetos de</target>
+      </trans-unit>
+      <trans-unit id="eZMZAPf" resname="Update Item">
+        <source>Update Item</source>
+        <target>Actualizar Objeto</target>
+      </trans-unit>
+      <trans-unit id="EgJVSEM" resname="Update this Item">
+        <source>Update this Item</source>
+        <target>Actualizar este objeto</target>
+      </trans-unit>
+      <trans-unit id="XjycvIr" resname="Choose a Item to">
+        <source>Choose a Item to</source>
+        <target>Elige un objeto a</target>
+      </trans-unit>
+      <trans-unit id="iqMY636" resname="Insert">
+        <source>Insert</source>
+        <target>Insertar</target>
+      </trans-unit>
+      <trans-unit id="_vbCYut" resname="There are no items for">
+        <source>There are no items for</source>
+        <target>No hay objetos para</target>
+      </trans-unit>
+      <trans-unit id="xZOZyp2" resname="List of Items">
+        <source>List of Items</source>
+        <target>Lista de Objetos</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

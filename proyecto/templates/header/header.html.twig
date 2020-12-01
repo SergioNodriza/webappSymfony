@@ -6,11 +6,30 @@
     <div class="navbar">
 
         {% if app.request.get('_route') == "app_login"%}
-            <a href="{{ path('app_login') }}" class="right active" id="toLogin">LogIn</a>
-            <a href="{{ path('register') }}" id="toRegister">Register</a>
+            <a href="{{ path('app_login') }}" class="right active" id="toLogin">{{ 'LogIn'|trans }}</a>
+            <a href="{{ path('register') }}" id="toRegister">{{ 'Register'|trans }}</a>
+            {% if app.request.locale == 'en'%}
+                <a class="right" style="visibility: hidden">LogOut</a>
+                <a href="{{ path('inicioLocale', {_locale: 'en'}) }}" class="right active" id="toEN">EN</a>
+                <a href="{{ path('inicioLocale', {_locale: 'es'}) }}" class="right" id="toEN">ES</a>
+            {% else %}
+                <a class="right" style="visibility: hidden">{{ 'LogOut'|trans }}</a>
+                <a href="{{ path('inicioLocale', {_locale: 'en'}) }}" class="right" id="toEN">EN</a>
+                <a href="{{ path('inicioLocale', {_locale: 'es'}) }}" class="right active" id="toEN">ES</a>
+            {% endif %}
+
         {% else %}
-            <a href="{{ path('app_login') }}" class="right">LogIn</a>
-            <a href="{{ path('register') }}" class="active">Register</a>
+            <a href="{{ path('app_login') }}" class="right">{{ 'LogIn'|trans }}</a>
+            <a href="{{ path('register') }}" class="active">{{ 'Register'|trans }}</a>
+            {% if app.request.locale == 'en'%}
+                <a class="right" style="visibility: hidden">LogOut</a>
+                <a href="{{ path('inicioLocale', {_locale: 'en'}) }}" class="right active" id="toEN">EN</a>
+                <a href="{{ path('inicioLocale', {_locale: 'es'}) }}" class="right" id="toEN">ES</a>
+            {% else %}
+                <a class="right" style="visibility: hidden">{{ 'LogOut'|trans }}</a>
+                <a href="{{ path('inicioLocale', {_locale: 'en'}) }}" class="right" id="toEN">EN</a>
+                <a href="{{ path('inicioLocale', {_locale: 'es'}) }}" class="right active" id="toEN">ES</a>
+            {% endif %}
         {% endif %}
 
     </div>

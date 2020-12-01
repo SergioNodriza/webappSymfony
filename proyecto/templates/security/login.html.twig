@@ -1,23 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}{{ 'LogIn'|trans }}{% endblock %}
 
 {% block body %}
     <div class="centerText">
         <form method="post" autocomplete="off">
 
-            <h1>LogIn</h1>
+            <h1>{{ 'LogIn'|trans }}</h1>
             <hr class="black">
             <br>
 
             <div class="inlineLeft">
-                <label for="inputName">Name</label>
+                <label for="inputName">{{ 'Name'|trans }}</label>
                 <hr>
                 <input type="text" value="{{ last_username }}" name="name" id="inputName" class="form-control" required autofocus>
 
                 <br><br>
 
-                <label for="inputPassword">Password</label>
+                <label for="inputPassword">{{ 'Password'|trans }}</label>
                 <hr>
                 <input type="password" name="password" id="inputPassword" class="form-control" required>
 
@@ -38,13 +38,13 @@
                     </div>
                 #}
 
-                <div class="inlineRight"><button type="submit">LogIn </button></div>
+                <div class="inlineRight"><button type="submit">{{ 'LogIn'|trans }}</button></div>
             </div>
 
             {% if app.user %}
                 <br>
                 <h3>
-                    You are logged in as {{ app.user.name }}, <a href="{{ path('app_logout') }}">Logout</a>
+                    {{ 'You are logged in as'|trans }} {{ app.user.name }}, <a href="{{ path('app_logout') }}">Logout</a>
                 </h3>
             {% endif %}
 
