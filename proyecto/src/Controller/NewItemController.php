@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Item;
 use App\Form\ItemType;
+use App\Model\FlashMessage;
 use App\Model\NewItem;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,10 +37,10 @@ class NewItemController extends AbstractController
             $result = $this->newItem->newItem($user, $item);
 
             if ($result) {
-                $this->addFlash('success', Item::ITEM_OK);
+                $this->addFlash('success', FlashMessage::ITEM_OK);
                 return $this->redirectToRoute("new-item");
             } else {
-                $this->addFlash('fail', Item::ITEM_FAIL);
+                $this->addFlash('fail', FlashMessage::ITEM_FAIL);
                 return $this->redirectToRoute("new-item");
             }
         }

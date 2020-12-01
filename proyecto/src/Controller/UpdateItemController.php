@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Item;
 use App\Form\ItemType;
+use App\Model\FlashMessage;
 use App\Model\ListItem;
 use App\Model\UpdateItem;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -71,11 +72,11 @@ class UpdateItemController extends AbstractController
             $result = $this->updateItem->updateItem($item);
 
             if ($result) {
-                $this->addFlash('success', Item::ITEM_UPDATED);
-                return $this->redirect("/update-item/" . $id);
+                $this->addFlash('success', FlashMessage::ITEM_UPDATED);
+                return $this->redirectToRoute("update-item-id", ['id' => $id]);
             } else {
-                $this->addFlash('fail', Item::ITEM_FAIL);
-                return $this->redirect("/update-item/" . $id);
+                $this->addFlash('fail', FlashMessage::ITEM_FAIL);
+                return $this->redirectToRoute("update-item-id", ['id' => $id]);
             }
         }
 

@@ -1,21 +1,17 @@
 {% block errorFlash %}
     <div class="centerText">
         {% for message in app.flashes('success') %}
-            <div class="alert alert-success">
-                <br>
-                <h3>
-                    {{ message }}
-                </h3>
-            </div>
+            <br>
+            <h3>
+                {{ message }}
+            </h3>
         {% endfor %}
 
         {% for message in app.flashes('fail') %}
-            <div class="alert alert-fail">
-                <br>
-                <h3>
-                    {{ message }}
-                </h3>
-            </div>
+            <br>
+            <h3>
+                {{ message }}
+            </h3>
         {% endfor %}
     </div>
 {% endblock %}

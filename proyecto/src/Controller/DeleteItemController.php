@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Item;
 use App\Model\DeleteItem;
+use App\Model\FlashMessage;
 use App\Model\ListItem;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -64,11 +65,11 @@ class DeleteItemController extends AbstractController
             $result = $this->deleteItem->deleteItem($item);
 
             if ($result) {
-                $this->addFlash('success', Item::ITEM_DELETED);
-                return $this->redirectToRoute('delete-item');
+                $this->addFlash('success', FlashMessage::ITEM_DELETED);
+                return $this->redirectToRoute("delete-item");
             } else {
-                $this->addFlash('fail', Item::ITEM_FAIL);
-                return $this->redirectToRoute('delete-item-id');
+                $this->addFlash('fail', FlashMessage::ITEM_FAIL);
+                return $this->redirectToRoute("delete-item-id", ['id' => $id]);
             }
         }
 

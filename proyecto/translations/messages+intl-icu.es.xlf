@@ -105,6 +105,10 @@
         <source>List of Items</source>
         <target>Lista de Objetos</target>
       </trans-unit>
+      <trans-unit id="YNOZchD" resname="Web App">
+        <source>Web App</source>
+        <target>Aplicación Web</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

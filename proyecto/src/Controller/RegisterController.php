@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Model\FlashMessage;
 use App\Model\Register;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -44,10 +45,10 @@ class RegisterController extends AbstractController
             $result = $this->register->register($user);
 
             if ($result) {
-                $this->addFlash('success', User::REGISTER_OK);
+                $this->addFlash('success', FlashMessage::REGISTER_OK);
                 return $this->redirect('/{_locale}/login/' . $name);
             } else {
-                $this->addFlash('fail', User::REGISTER_FAIL);
+                $this->addFlash('fail', FlashMessage::REGISTER_FAIL);
                 return $this->redirectToRoute("register");
             }
         }

@@ -44,7 +44,7 @@
             {% if app.user %}
                 <br>
                 <h3>
-                    {{ 'You are logged in as'|trans }} {{ app.user.name }}, <a href="{{ path('app_logout') }}">Logout</a>
+                    {{ 'You are logged in as'|trans }} {{ app.user.name }}, <a href="{{ path('app_logout') }}">{{ 'LogOut'|trans }}</a>
                 </h3>
             {% endif %}
 

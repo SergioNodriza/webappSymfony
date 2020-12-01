@@ -13,9 +13,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface
 {
-    const REGISTER_OK = 'User Registered';
-    const REGISTER_FAIL = 'Can not register that user';
-
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
