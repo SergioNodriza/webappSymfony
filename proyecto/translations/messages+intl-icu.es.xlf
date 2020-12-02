@@ -109,6 +109,30 @@
         <source>Web App</source>
         <target>Aplicación Web</target>
       </trans-unit>
+      <trans-unit id="6No0X0r" resname="Can not register that user">
+        <source>Can not register that user</source>
+        <target>No se puede registrar ese usuario</target>
+      </trans-unit>
+      <trans-unit id=".eabHBQ" resname="User Registered, please LogIn">
+        <source>User Registered, please LogIn</source>
+        <target>Usuario Registrado, inicia sesión</target>
+      </trans-unit>
+      <trans-unit id="sTak4TC" resname="Item Added">
+        <source>Item Added</source>
+        <target>Objeto Añadido</target>
+      </trans-unit>
+      <trans-unit id="la8DKS0" resname="Item Updated">
+        <source>Item Updated</source>
+        <target>Objeto Actualizado</target>
+      </trans-unit>
+      <trans-unit id="VNjwdjl" resname="Item Deleted">
+        <source>Item Deleted</source>
+        <target>Objeto Eliminado</target>
+      </trans-unit>
+      <trans-unit id="2cZMaZD" resname="Error in this item operation">
+        <source>Error in this item operation</source>
+        <target>Error en la operación</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

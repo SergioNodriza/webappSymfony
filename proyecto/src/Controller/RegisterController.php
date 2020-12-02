@@ -11,15 +11,21 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class RegisterController extends AbstractController
 {
 
     private Register $register;
+    /**
+     * @var TranslatorInterface
+     */
+    private TranslatorInterface $translator;
 
-    public function __construct(Register $register)
+    public function __construct(Register $register, TranslatorInterface $translator)
     {
         $this->register = $register;
+        $this->translator = $translator;
     }
 
     /**
@@ -45,10 +51,13 @@ class RegisterController extends AbstractController
             $result = $this->register->register($user);
 
             if ($result) {
-                $this->addFlash('success', FlashMessage::REGISTER_OK);
-                return $this->redirect('/{_locale}/login/' . $name);
+                $message = $this->translator->trans(FlashMessage::REGISTER_OK);
+                $this->addFlash('success', $message);
+                return $this->redirectToRoute('app_login', ['name' => $name]);
             } else {
-                $this->addFlash('fail', FlashMessage::REGISTER_FAIL);
+
+                $message = $this->translator->trans(FlashMessage::REGISTER_FAIL);
+                $this->addFlash('fail', $message);
                 return $this->redirectToRoute("register");
             }
         }

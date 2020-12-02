@@ -4,7 +4,7 @@ namespace App\Model;
 
 class FlashMessage
 {
-    const REGISTER_OK = 'User Registered';
+    const REGISTER_OK = 'User Registered, please LogIn';
     const REGISTER_FAIL = 'Can not register that user';
 
     const ITEM_OK = 'Item added';

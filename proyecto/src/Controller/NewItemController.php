@@ -10,14 +10,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class NewItemController extends AbstractController
 {
     private NewItem $newItem;
+    private TranslatorInterface $translator;
 
-    public function __construct(NewItem $newItem)
+    public function __construct(NewItem $newItem, TranslatorInterface $translator)
     {
         $this->newItem = $newItem;
+        $this->translator = $translator;
     }
 
     /**
@@ -37,10 +40,12 @@ class NewItemController extends AbstractController
             $result = $this->newItem->newItem($user, $item);
 
             if ($result) {
-                $this->addFlash('success', FlashMessage::ITEM_OK);
+                $message = $this->translator->trans(FlashMessage::ITEM_OK);
+                $this->addFlash('success', $message);
                 return $this->redirectToRoute("new-item");
             } else {
-                $this->addFlash('fail', FlashMessage::ITEM_FAIL);
+                $message = $this->translator->trans(FlashMessage::ITEM_FAIL);
+                $this->addFlash('success', $message);
                 return $this->redirectToRoute("new-item");
             }
         }

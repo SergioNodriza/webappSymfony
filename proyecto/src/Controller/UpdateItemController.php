@@ -11,16 +11,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class UpdateItemController extends AbstractController
 {
     private UpdateItem $updateItem;
     private ListItem $listItem;
+    private TranslatorInterface $translator;
 
-    public function __construct(ListItem $listItem, UpdateItem $updateItem)
+    public function __construct(ListItem $listItem, UpdateItem $updateItem, TranslatorInterface $translator)
     {
         $this->updateItem = $updateItem;
         $this->listItem = $listItem;
+        $this->translator = $translator;
     }
 
 
@@ -72,10 +75,12 @@ class UpdateItemController extends AbstractController
             $result = $this->updateItem->updateItem($item);
 
             if ($result) {
-                $this->addFlash('success', FlashMessage::ITEM_UPDATED);
+                $message = $this->translator->trans(FlashMessage::ITEM_UPDATED);
+                $this->addFlash('success', $message);
                 return $this->redirectToRoute("update-item-id", ['id' => $id]);
             } else {
-                $this->addFlash('fail', FlashMessage::ITEM_FAIL);
+                $message = $this->translator->trans(FlashMessage::ITEM_FAIL);
+                $this->addFlash('success', $message);
                 return $this->redirectToRoute("update-item-id", ['id' => $id]);
             }
         }

@@ -10,16 +10,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class DeleteItemController extends AbstractController
 {
     private ListItem $listItem;
     private DeleteItem $deleteItem;
+    private TranslatorInterface $translator;
 
-    public function __construct(ListItem $listItem, DeleteItem $deleteItem)
+    public function __construct(ListItem $listItem, DeleteItem $deleteItem, TranslatorInterface $translator)
     {
         $this->listItem = $listItem;
         $this->deleteItem = $deleteItem;
+        $this->translator = $translator;
     }
 
     /**
@@ -65,10 +68,12 @@ class DeleteItemController extends AbstractController
             $result = $this->deleteItem->deleteItem($item);
 
             if ($result) {
-                $this->addFlash('success', FlashMessage::ITEM_DELETED);
+                $message = $this->translator->trans(FlashMessage::ITEM_DELETED);
+                $this->addFlash('success', $message);
                 return $this->redirectToRoute("delete-item");
             } else {
-                $this->addFlash('fail', FlashMessage::ITEM_FAIL);
+                $message = $this->translator->trans(FlashMessage::ITEM_FAIL);
+                $this->addFlash('success', $message);
                 return $this->redirectToRoute("delete-item-id", ['id' => $id]);
             }
         }
