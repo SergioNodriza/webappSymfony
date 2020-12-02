@@ -27,7 +27,7 @@
                 {% else %}
                     <td>No</td>
                 {% endif %}
-                <td> {{ item.createdAt | date('Y-m-d h:i:s')}}</td>
+                <td> {{ item.createdAt | format_datetime('medium', 'short', locale='')}}</td>
             </tr>
         {% endfor %}
 
