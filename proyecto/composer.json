@@ -13,8 +13,10 @@
         "doctrine/doctrine-bundle": "^2.2",
         "doctrine/doctrine-migrations-bundle": "^3.0",
         "doctrine/orm": "^2.7",
+        "lorenzo/pinky": "^1.0",
         "nelmio/cors-bundle": "^2.1",
         "phpdocumentor/reflection-docblock": "^5.2",
+        "symfony/amqp-messenger": "5.1.*",
         "symfony/asset": "5.1.*",
         "symfony/console": "5.1.*",
         "symfony/css-selector": "5.1.*",
@@ -35,6 +37,7 @@
         "symfony/uid": "5.1.*",
         "symfony/validator": "5.1.*",
         "symfony/yaml": "5.1.*",
+        "twig/cssinliner-extra": "^3.1",
         "twig/intl-extra": "^3.1"
     },
     "require-dev": {

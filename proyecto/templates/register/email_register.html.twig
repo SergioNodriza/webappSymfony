@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    {% block stylesheets %}
+        <link href="{{ asset('css/styleTwig.css') }}" type="text/css" rel="stylesheet" />
+    {% endblock %}
+</head>
+
+<body>
+
+{% block content %}
+
+    Id: {{ user.id }}<br />
+    Name: {{ user.name }}<br />
+    Active: {{ user.active }}<br />
+
+{% endblock %}
+
+{% block action %}
+
+    <pre size="16"></pre>
+    <button href="{{ url('activateRegister', { id: user.id, activate: true }) }}">Accept</button>
+    <button href="{{ url('activateRegister', { id: user.id, activate: false }) }}">Reject</button>
+
+{% endblock %}
+
+</body>
+</html>
+

@@ -51,7 +51,7 @@
             {% if error %}
                 <br>
                 <h3>
-                    {{ error.messageKey|trans(error.messageData, 'security') }}
+                    {{ "User not found or unactivated"|trans }}
                 </h3>
             {% endif %}
 

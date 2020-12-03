@@ -16,12 +16,12 @@
             <a href="{{ path('app_logout') }}" class="right">{{ 'LogOut'|trans }}</a>
             {% if app.request.locale == 'en'%}
                 <a class="right" style="visibility: hidden">LogIn</a>
-                <a href="{{ path('inicioLocale', {_locale: 'en'}) }}" class="right active" id="toEN">EN</a>
-                <a href="{{ path('inicioLocale', {_locale: 'es'}) }}" class="right" id="toEN">ES</a>
+                <a href="{{ app.request.uri|replace({'es': "en"}) }}" class="right active" id="toEN">EN</a>
+                <a href="{{ app.request.uri|replace({'en': "es"}) }}" class="right" id="toEN">ES</a>
             {% else %}
-                <a class="right" style="visibility: hidden">{{ 'LogIn'|trans }}</a>
-                <a href="{{ path('inicioLocale', {_locale: 'en'}) }}" class="right" id="toEN">EN</a>
-                <a href="{{ path('inicioLocale', {_locale: 'es'}) }}" class="right active" id="toEN">ES</a>
+                <a class="right" style="visibility: hidden">{{ 'LogOut'|trans }}</a>
+                <a href="{{ app.request.uri|replace({'es': "en"}) }}" class="right" id="toEN">EN</a>
+                <a href="{{ app.request.uri|replace({'en': "es"}) }}" class="right active" id="toEN">ES</a>
             {% endif %}
 
         {% elseif route == 'update-item' or route == 'update-item-id'%}
@@ -33,12 +33,12 @@
             <a href="{{ path('app_logout') }}" class="right">{{ 'LogOut'|trans }}</a>
             {% if app.request.locale == 'en'%}
                 <a class="right" style="visibility: hidden">LogIn</a>
-                <a href="{{ path('inicioLocale', {_locale: 'en'}) }}" class="right active" id="toEN">EN</a>
-                <a href="{{ path('inicioLocale', {_locale: 'es'}) }}" class="right" id="toEN">ES</a>
+                <a href="{{ app.request.uri|replace({'es': "en"}) }}" class="right active" id="toEN">EN</a>
+                <a href="{{ app.request.uri|replace({'en': "es"}) }}" class="right" id="toEN">ES</a>
             {% else %}
-                <a class="right" style="visibility: hidden">{{ 'LogIn'|trans }}</a>
-                <a href="{{ path('inicioLocale', {_locale: 'en'}) }}" class="right" id="toEN">EN</a>
-                <a href="{{ path('inicioLocale', {_locale: 'es'}) }}" class="right active" id="toEN">ES</a>
+                <a class="right" style="visibility: hidden">{{ 'LogOut'|trans }}</a>
+                <a href="{{ app.request.uri|replace({'es': "en"}) }}" class="right" id="toEN">EN</a>
+                <a href="{{ app.request.uri|replace({'en': "es"}) }}" class="right active" id="toEN">ES</a>
             {% endif %}
 
         {% elseif route == 'delete-item' or route == 'delete-item-id' %}
@@ -50,12 +50,12 @@
             <a href="{{ path('app_logout') }}" class="right">{{ 'LogOut'|trans }}</a>
             {% if app.request.locale == 'en'%}
                 <a class="right" style="visibility: hidden">LogIn</a>
-                <a href="{{ path('inicioLocale', {_locale: 'en'}) }}" class="right active" id="toEN">EN</a>
-                <a href="{{ path('inicioLocale', {_locale: 'es'}) }}" class="right" id="toEN">ES</a>
+                <a href="{{ app.request.uri|replace({'es': "en"}) }}" class="right active" id="toEN">EN</a>
+                <a href="{{ app.request.uri|replace({'en': "es"}) }}" class="right" id="toEN">ES</a>
             {% else %}
-                <a class="right" style="visibility: hidden">{{ 'LogIn'|trans }}</a>
-                <a href="{{ path('inicioLocale', {_locale: 'en'}) }}" class="right" id="toEN">EN</a>
-                <a href="{{ path('inicioLocale', {_locale: 'es'}) }}" class="right active" id="toEN">ES</a>
+                <a class="right" style="visibility: hidden">{{ 'LogOut'|trans }}</a>
+                <a href="{{ app.request.uri|replace({'es': "en"}) }}" class="right" id="toEN">EN</a>
+                <a href="{{ app.request.uri|replace({'en': "es"}) }}" class="right active" id="toEN">ES</a>
             {% endif %}
 
         {% elseif route == 'inicio' or route == "inicioLocale"%}
@@ -67,12 +67,12 @@
             <a href="{{ path('app_logout') }}" class="right">{{ 'LogOut'|trans }}</a>
             {% if app.request.locale == 'en'%}
                 <a class="right" style="visibility: hidden">LogIn</a>
-                <a href="{{ path('inicioLocale', {_locale: 'en'}) }}" class="right active" id="toEN">EN</a>
-                <a href="{{ path('inicioLocale', {_locale: 'es'}) }}" class="right" id="toEN">ES</a>
+                <a href="{{ app.request.uri|replace({'es': "en"}) }}" class="right active" id="toEN">EN</a>
+                <a href="{{ app.request.uri|replace({'en': "es"}) }}" class="right" id="toEN">ES</a>
             {% else %}
-                <a class="right" style="visibility: hidden">{{ 'LogIn'|trans }}</a>
-                <a href="{{ path('inicioLocale', {_locale: 'en'}) }}" class="right" id="toEN">EN</a>
-                <a href="{{ path('inicioLocale', {_locale: 'es'}) }}" class="right active" id="toEN">ES</a>
+                <a class="right" style="visibility: hidden">{{ 'LogOut'|trans }}</a>
+                <a href="{{ app.request.uri|replace({'es': "en"}) }}" class="right" id="toEN">EN</a>
+                <a href="{{ app.request.uri|replace({'en': "es"}) }}" class="right active" id="toEN">ES</a>
             {% endif %}
 
         {% endif %}

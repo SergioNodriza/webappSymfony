@@ -40,10 +40,16 @@ class User implements UserInterface
      */
     private $roles = [];
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $active;
+
     public function __construct()
     {
         $this->items = new ArrayCollection();
         $this->roles[] = 'ROLE_USER';
+        $this->active = false;
     }
 
     public function getId(): ?int
@@ -126,5 +132,17 @@ class User implements UserInterface
 
     public function eraseCredentials()
     {
+    }
+
+    public function getActive(): ?bool
+    {
+        return $this->active;
+    }
+
+    public function setActive(bool $active): self
+    {
+        $this->active = $active;
+
+        return $this;
     }
 }

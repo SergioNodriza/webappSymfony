@@ -113,9 +113,9 @@
         <source>Can not register that user</source>
         <target>No se puede registrar ese usuario</target>
       </trans-unit>
-      <trans-unit id=".eabHBQ" resname="User Registered, please LogIn">
-        <source>User Registered, please LogIn</source>
-        <target>Usuario Registrado, inicia sesión</target>
+      <trans-unit id="vxfcEG1" resname="User Registered, its getting Activated">
+        <source>User Registered, its getting Activated</source>
+        <target>Usuario Registrado, se está activando</target>
       </trans-unit>
       <trans-unit id="sTak4TC" resname="Item Added">
         <source>Item Added</source>
@@ -132,6 +132,10 @@
       <trans-unit id="2cZMaZD" resname="Error in this item operation">
         <source>Error in this item operation</source>
         <target>Error en la operación</target>
+      </trans-unit>
+      <trans-unit id="n57k5YO" resname="User not found or unactivated">
+        <source>User not found or unactivated</source>
+        <target>Usuario no encontrado o no activado</target>
       </trans-unit>
     </body>
   </file>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="symfony_db@localhost" uuid="a022f54a-baf8-4c83-88c9-e03a45822724">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:36000/symfony_db</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="@localhost" uuid="6c6538f7-e178-4b9e-ba0d-bcff9a893f20">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:36100</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="mailer" uuid="89d44e84-7064-40c4-8360-e4239920f703">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:36100</jdbc-url>
+    </data-source>
+  </component>
+</project>

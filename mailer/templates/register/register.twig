@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h3>New User, {{ name }}</h3>
+    <p>Click to Activate the Account</p>
+    <p>
+        <a href="{{ url }}">{{ url }}</a>
+    </p>
+
+    <p>Click to Reject the Account</p>
+    <p>
+        <a href="{{ url2 }}">{{ url2 }}</a>
+    </p>
+{% endblock %}
