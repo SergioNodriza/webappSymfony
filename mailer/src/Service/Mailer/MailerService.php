@@ -13,10 +13,6 @@ use Twig\Environment;
 class MailerService
 {
 
-    private const TEMPLATE_SUBJECT_MAP = [
-        TwigTemplate::USER_REGISTER => 'New User',
-    ];
-
     private MailerInterface $mailer;
     private Environment $engine;
     private LoggerInterface $logger;
@@ -32,16 +28,17 @@ class MailerService
 
     /**
      * @param string $receiver
+     * @param string $id
      * @param string $template
      * @param array $payload
      * @throws Exception
      */
-    public function send(string $receiver, string $template, array $payload): void
+    public function send(string $receiver, string $id, string $template, array $payload): void
     {
         $email = (new Email())
             ->from($this->mailerDefaultSender)
             ->to($receiver)
-            ->subject(self::TEMPLATE_SUBJECT_MAP[$template])
+            ->subject('User: ' . $id)
             ->html($this->engine->render($template, $payload));
 
         try {

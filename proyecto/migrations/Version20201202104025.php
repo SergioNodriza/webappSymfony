@@ -19,12 +19,12 @@ final class Version20201202104025 extends AbstractMigration
 
     public function up(Schema $schema) : void
     {
-        $this->addSql('ALTER TABLE item ADD COLUMN activate TINYINT(1) DEFAULT 0');
+        $this->addSql("ALTER TABLE item ADD COLUMN state VARCHAR(255) DEFAULT 'registered' NOT NULL");
     }
 
     public function down(Schema $schema) : void
     {
-        $this->addSql('ALTER TABLE item DROP COLUMN activate');
+        $this->addSql('ALTER TABLE item DROP COLUMN state');
 
     }
 }

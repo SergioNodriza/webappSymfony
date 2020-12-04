@@ -41,15 +41,14 @@ class User implements UserInterface
     private $roles = [];
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="string", length=255, options={"default": "submitted"})
      */
-    private $active;
+    private $state = "registered";
 
     public function __construct()
     {
         $this->items = new ArrayCollection();
         $this->roles[] = 'ROLE_USER';
-        $this->active = false;
     }
 
     public function getId(): ?int
@@ -134,14 +133,14 @@ class User implements UserInterface
     {
     }
 
-    public function getActive(): ?bool
+    public function getState(): ?string
     {
-        return $this->active;
+        return $this->state;
     }
 
-    public function setActive(bool $active): self
+    public function setState(string $state): self
     {
-        $this->active = $active;
+        $this->state = $state;
 
         return $this;
     }

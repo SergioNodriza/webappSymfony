@@ -1,0 +1,33 @@
+framework:
+    workflows:
+        user:
+            type: state_machine
+            audit_trail:
+                enabled: "%kernel.debug%"
+            marking_store:
+                type: 'method'
+                property: 'state'
+            supports:
+                - App\Entity\User
+            initial_marking: registered
+            places:
+                - registered
+                - spam
+                - active
+                - inactive
+            transitions:
+                accept:
+                    from: registered
+                    to: active
+                reject:
+                    from: registered
+                    to: spam
+                deactivate:
+                    from: active
+                    to: inactive
+                activate:
+                    from: inactive
+                    to: active
+                reject_inactive:
+                    from: inactive
+                    to: spam

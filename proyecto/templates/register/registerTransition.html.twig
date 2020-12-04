@@ -1,0 +1,25 @@
+{% extends 'baseTransaction.html.twig' %}
+
+{% block body %}
+
+    <div class="centerText">
+
+        <h1>{{ result.info }}</h1>
+
+        <hr class="black">
+        <br>
+
+        <table class="Transaction">
+            <tr>
+                <th class="Transaction">Transition</th>
+                <th class="Transaction">State</th>
+            </tr>
+            <tr>
+                <td>{{ result.transition }}</td>
+                <td>{{ result.state }}</td>
+            </tr>
+        </table>
+
+    </div>
+
+{% endblock %}

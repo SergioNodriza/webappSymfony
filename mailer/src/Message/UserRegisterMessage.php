@@ -6,11 +6,13 @@ class UserRegisterMessage
 {
     private string $id;
     private string $name;
+    private string $state;
 
-    public function __construct(string $id, string $name)
+    public function __construct(string $id, string $name, string $state)
     {
         $this->id = $id;
         $this->name = $name;
+        $this->state = $state;
     }
 
     /**
@@ -29,5 +31,11 @@ class UserRegisterMessage
         return $this->name;
     }
 
-
+    /**
+     * @return string
+     */
+    public function getState(): string
+    {
+        return $this->state;
+    }
 }

@@ -6,5 +6,5 @@ namespace Mailer\Service\Mailer;
 
 abstract class ClientRoute
 {
-    public const ACTIVATE_ACCOUNT = '/register/activate';
+    public const ACTIVATE_ACCOUNT = '/register/state';
 }

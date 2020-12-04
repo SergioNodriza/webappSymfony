@@ -31,22 +31,24 @@ class UserRegisterMessageHandler implements MessageHandlerInterface
         $payload = [
             'name' => $message->getName(),
             'id' => $message->getId(),
-            'url' => \sprintf(
+            'state' => $message->getState(),
+
+            'urlActivate' => \sprintf(
                 '%s%s/%s?%s',
                 $this->host,
                 ClientRoute::ACTIVATE_ACCOUNT,
                 $message->getId(),
-                "activate=true"
+                "state=active"
             ),
-            'url2' => \sprintf(
+            'urlReject_inactive' => \sprintf(
                 '%s%s/%s?%s',
                 $this->host,
                 ClientRoute::ACTIVATE_ACCOUNT,
                 $message->getId(),
-                "activate=false"
+                "state=reject_inactive"
             )
         ];
 
-        $this->mailerService->send($this->mailerDefaultSender, TwigTemplate::USER_REGISTER, $payload);
+        $this->mailerService->send($this->mailerDefaultSender, $message->getId(),TwigTemplate::USER_REGISTER, $payload);
     }
 }

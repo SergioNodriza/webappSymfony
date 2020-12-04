@@ -45,6 +45,7 @@ class RegisterController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $user->setPassword($userPasswordEncoder->encodePassword($user, $form['password']->getData()));
+            $user->setState("registered");
             $result = $this->register->register($user);
             $name = $user->getUsername();
 
@@ -66,7 +67,7 @@ class RegisterController extends AbstractController
     }
 
     /**
-     * @Route("/{_locale<%app.supported_locales%>}/register/activate/{id}", name="activateRegister")
+     * @Route("/{_locale<%app.supported_locales%>}/register/state/{id}", name="activateRegister")
      * @param Request $request
      * @param string $id
      * @param UserRepository $userRepository
@@ -74,14 +75,14 @@ class RegisterController extends AbstractController
      */
     public function activate(Request $request, string $id, UserRepository $userRepository) {
 
-        $accepted = $request->query->getBoolean('activate');
+        $transition = $request->query->get('state');
         $user = $userRepository->findOneBy(['id' => $id]);
 
         if ($user == null) {
             return new Response("User not found");
         }
 
-        $result = $this->register->activate($accepted, $user);
-        return new Response($result);
+        $result = $this->register->activate($transition, $user);
+        return $this->render('register/registerTransition.html.twig', compact('result'));
     }
 }

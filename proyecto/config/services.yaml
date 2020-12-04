@@ -12,7 +12,6 @@ parameters:
     router.request_context.scheme: '%env(default:default_scheme:SYMFONY_DEFAULT_ROUTE_SCHEME)%'
 
 services:
-    Twig\Extra\Intl\IntlExtension: null
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.

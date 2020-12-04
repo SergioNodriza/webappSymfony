@@ -6,5 +6,5 @@ namespace Mailer\Templating;
 
 abstract class TwigTemplate
 {
-    public const USER_REGISTER = 'register/register.twig';
+    public const USER_REGISTER = 'register/register.html.twig';
 }

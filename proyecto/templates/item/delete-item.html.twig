@@ -11,7 +11,7 @@
     <hr class="black">
     <br>
 
-    <table>
+    <table class="List">
 
         <tr>
             <th>{{ 'Title'|trans }}</th>
@@ -26,7 +26,7 @@
             {% else %}
                 <td>No</td>
             {% endif %}
-            <td> {{ item.createdAt | date('Y-m-d h:i:s')}}</td>
+            <td> {{ item.createdAt | format_datetime('medium', 'short', locale='')}}</td>
         </tr>
 
     </table>
