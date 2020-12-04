@@ -10,4 +10,4 @@
 ###< symfony/framework-bundle ###
 
 .env.local
-./docker
+/docker/
