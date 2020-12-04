@@ -22,7 +22,7 @@
 
         {% if items|length == 0 %}
 
-            <h3>{{ 'There are no items for'|trans }} {{ app.user }}, add <a href="{{ path('new-item') }}">some</a></h3>
+            <h3>{{ 'There are no items for'|trans }} {{ app.user }}, {{ 'add'|trans }} <a href="{{ path('new-item') }}">{{ 'some'|trans }}</a></h3>
 
         {% else %}
 

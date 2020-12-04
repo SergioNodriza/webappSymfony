@@ -1,0 +1,12 @@
+{% extends '@email/default/notification/body.html.twig' %}
+
+{% block content %}
+    <h3>New User</h3>
+    Id: {{ id }} <br />
+    Name: {{ name }} <br />
+{% endblock %}
+
+{% block action %}
+    <button href="{{ url }}">Accept</button>
+    <button href="{{ url2 }}">Reject</button>
+{% endblock %}

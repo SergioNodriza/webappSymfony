@@ -106,7 +106,7 @@
       <excludeFolder url="file://$MODULE_DIR$/proyecto/vendor/symfony/yaml" />
       <excludeFolder url="file://$MODULE_DIR$/proyecto/vendor/tijsverkoyen/css-to-inline-styles" />
       <excludeFolder url="file://$MODULE_DIR$/proyecto/vendor/twig/cssinliner-extra" />
-      <excludeFolder url="file://$MODULE_DIR$/proyecto/vendor/twig/intl-extra" />
+      <excludeFolder url="file://$MODULE_DIR$/proyecto/vendor/twig/extra-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/proyecto/vendor/twig/twig" />
       <excludeFolder url="file://$MODULE_DIR$/proyecto/vendor/webimpress/safe-writer" />
       <excludeFolder url="file://$MODULE_DIR$/proyecto/vendor/webmozart/assert" />

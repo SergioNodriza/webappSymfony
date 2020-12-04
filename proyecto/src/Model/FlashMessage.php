@@ -10,8 +10,8 @@ class FlashMessage
     const REGISTER_ACTIVATE_REJECTED = 'User rejected';
     const REGISTER_ACTIVATE_NOT_FOUND = 'User not found';
 
-    const ITEM_OK = 'Item added';
-    const ITEM_UPDATED = 'Item updated';
-    const ITEM_DELETED = 'Item deleted';
+    const ITEM_OK = 'Item Added';
+    const ITEM_UPDATED = 'Item Updated';
+    const ITEM_DELETED = 'Item Deleted';
     const ITEM_FAIL = 'Error in this item operation';
 }

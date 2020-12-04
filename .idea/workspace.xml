@@ -11,39 +11,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c2687b26-2981-4d99-a1b6-bdd4438f4615" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/mailer/Makefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mailer/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mailer/docker/php/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mailer/docker/php/php.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mailer/docker/php/xdebug-linux.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mailer/src/Message/UserRegisterMessage.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mailer/src/MessageHandler/UserRegisterMessageHandler.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mailer/src/Serializer/Messenger/EventSerializer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mailer/src/Service/Mailer/ClientRoute.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mailer/src/Service/Mailer/MailerService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mailer/src/Templating/TwigTemplate.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mailer/templates/register/register.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/proyecto/src/Message/RoutingKey.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/proyecto/src/Message/UserRegisterMessage.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/proyecto/templates/register/email_register.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rabbitmq/Makefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rabbitmq/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rabbitmq/docker/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rabbitmq/docker/rabbitmq.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/mailer/public/css/styleTwig.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mailer/templates/register/register2.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/webappSymfony.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webappSymfony.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mailer/.env" beforeDir="false" afterPath="$PROJECT_DIR$/mailer/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mailer/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/mailer/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mailer/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/mailer/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mailer/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/mailer/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mailer/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/mailer/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mailer/src/MessageHandler/UserRegisterMessageHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/mailer/src/MessageHandler/UserRegisterMessageHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mailer/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/mailer/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mailer/templates/register/register.twig" beforeDir="false" afterPath="$PROJECT_DIR$/mailer/templates/register/register.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proyecto/.env" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proyecto/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proyecto/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proyecto/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proyecto/docker/php/php.ini" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto/docker/php/php.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proyecto/src/Controller/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto/src/Controller/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proyecto/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto/config/bundles.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proyecto/src/Model/FlashMessage.php" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto/src/Model/FlashMessage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proyecto/src/Model/Register.php" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto/src/Model/Register.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proyecto/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proyecto/templates/header/header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto/templates/header/header.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proyecto/templates/header/headerLogged.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto/templates/header/headerLogged.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proyecto/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto/templates/security/login.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto/templates/item/choose-item.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto/templates/item/choose-item.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto/templates/item/list-item.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto/templates/item/list-item.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto/templates/register/email_register.html.twig" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/proyecto/translations/messages+intl-icu.es.xlf" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto/translations/messages+intl-icu.es.xlf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -181,7 +171,6 @@
       <path value="$PROJECT_DIR$/proyecto/vendor/symfony/web-profiler-bundle" />
       <path value="$PROJECT_DIR$/proyecto/vendor/symfony/asset" />
       <path value="$PROJECT_DIR$/proyecto/vendor/symfony/translation" />
-      <path value="$PROJECT_DIR$/proyecto/vendor/twig/intl-extra" />
       <path value="$PROJECT_DIR$/proyecto/vendor/symfony/amqp-messenger" />
       <path value="$PROJECT_DIR$/proyecto/vendor/symfony/messenger" />
       <path value="$PROJECT_DIR$/proyecto/vendor/symfony/redis-messenger" />
@@ -189,6 +178,7 @@
       <path value="$PROJECT_DIR$/proyecto/vendor/twig/cssinliner-extra" />
       <path value="$PROJECT_DIR$/proyecto/vendor/tijsverkoyen/css-to-inline-styles" />
       <path value="$PROJECT_DIR$/proyecto/vendor/lorenzo/pinky" />
+      <path value="$PROJECT_DIR$/proyecto/vendor/twig/extra-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1kgK3Qf61qIEtIkUxFm8DsxojWD" />
@@ -210,7 +200,7 @@
     <property name="TYPO3XliffLanguages" value="af:Afrikaans;&#10;ar:Arabic;&#10;bs:Bosnian;&#10;bg:Bulgarian;&#10;ca:Catalan;&#10;ch:Chinese (Simpl.);&#10;cs:Czech;&#10;da:Danish;&#10;de:German;&#10;el:Greek;&#10;eo:Esperanto;&#10;es:Spanish;&#10;et:Estonian;&#10;eu:Basque;&#10;fa:Persian;&#10;fi:Finnish;&#10;fo:Faroese;&#10;fr:French;&#10;fr_CA:French (Canada);&#10;gl:Galician;&#10;he:Hebrew;&#10;hi:Hindi;&#10;hr:Croatian;&#10;hu:Hungarian;&#10;is:Icelandic;&#10;it:Italian;&#10;ja:Japanese;&#10;ka:Georgian;&#10;kl:Greenlandic;&#10;km:Khmer;&#10;ko:Korean;&#10;lt:Lithuanian;&#10;lv:Latvian;&#10;ms:Malay;&#10;nl:Dutch;&#10;no:Norwegian;&#10;pl:Polish;&#10;pt:Portuguese;&#10;pt_BR:Brazilian Portuguese;&#10;ro:Romanian;&#10;ru:Russian;&#10;sk:Slovak;&#10;sl:Slovenian;&#10;sq:Albanian;&#10;sr:Serbian;&#10;sv:Swedish;&#10;th:Thai;&#10;tr:Turkish;&#10;uk:Ukrainian;&#10;vi:Vietnamese;&#10;zh:Chinese (Trad.)" />
     <property name="TYPO3XliffPathToExtensionLanguageFiles" value="Resources/Private/Language/" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../guestbook" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/mailer" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="Symfony2.SettingsForm" />
@@ -218,18 +208,18 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/mailer/templates/emails" />
       <recent name="$PROJECT_DIR$/mailer/templates/register" />
       <recent name="$PROJECT_DIR$/mailer" />
       <recent name="$PROJECT_DIR$/proyecto/templates/item" />
       <recent name="$PROJECT_DIR$/proyecto/public/css" />
-      <recent name="$PROJECT_DIR$/proyecto/public" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/mailer/src" />
-      <recent name="$PROJECT_DIR$/mailer/templates" />
-      <recent name="$PROJECT_DIR$/proyecto/src/Message" />
-      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/mailer" />
+      <recent name="$PROJECT_DIR$/proyecto" />
+      <recent name="$PROJECT_DIR$/mailer/templates" />
+      <recent name="$PROJECT_DIR$/mailer/public" />
+      <recent name="$PROJECT_DIR$/mailer/src" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -261,7 +251,9 @@
       <workItem from="1606816226624" duration="4204000" />
       <workItem from="1606892299189" duration="5753000" />
       <workItem from="1606898132876" duration="8757000" />
-      <workItem from="1606978743883" duration="9956000" />
+      <workItem from="1606978743883" duration="13206000" />
+      <workItem from="1606992193322" duration="1126000" />
+      <workItem from="1607065083051" duration="2713000" />
     </task>
     <servers />
   </component>
@@ -317,10 +309,10 @@
       <screen x="72" y="0" width="1848" height="1080" />
     </state>
     <state x="729" y="298" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.1080.1920.1080/72.0.1848.1080@72.0.1848.1080" timestamp="1606983381093" />
-    <state x="779" y="298" width="416" height="638" key="FileChooserDialogImpl" timestamp="1606985466576">
+    <state x="779" y="298" width="416" height="645" key="FileChooserDialogImpl" timestamp="1607067735732">
       <screen x="72" y="0" width="1848" height="1080" />
     </state>
-    <state x="779" y="298" width="416" height="638" key="FileChooserDialogImpl/0.1080.1920.1080/72.0.1848.1080@72.0.1848.1080" timestamp="1606985466576" />
+    <state x="779" y="298" width="416" height="645" key="FileChooserDialogImpl/0.1080.1920.1080/72.0.1848.1080@72.0.1848.1080" timestamp="1607067735732" />
     <state width="1240" height="284" key="GridCell.Tab.0.bottom" timestamp="1606719889678">
       <screen x="72" y="0" width="1848" height="1080" />
     </state>
@@ -397,10 +389,10 @@
       <screen x="72" y="0" width="1848" height="1080" />
     </state>
     <state x="606" y="153" width="770" height="780" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.1080.1920.1080/72.0.1848.1080@72.0.1848.1080" timestamp="1606297660764" />
-    <state x="675" y="266" width="872" height="606" key="find.popup" timestamp="1606906655796">
+    <state x="675" y="266" width="872" height="606" key="find.popup" timestamp="1606989194495">
       <screen x="72" y="0" width="1848" height="1080" />
     </state>
-    <state x="675" y="266" width="872" height="606" key="find.popup/0.1080.1920.1080/72.0.1848.1080@72.0.1848.1080" timestamp="1606906655796" />
+    <state x="675" y="266" width="872" height="606" key="find.popup/0.1080.1920.1080/72.0.1848.1080@72.0.1848.1080" timestamp="1606989194495" />
     <state x="705" y="311" width="571" height="465" key="refactoring.ChangeSignatureDialog" timestamp="1606726892538">
       <screen x="72" y="0" width="1848" height="1080" />
     </state>

@@ -99,7 +99,6 @@
       <path value="$PROJECT_DIR$/proyecto/vendor/symfony/web-profiler-bundle" />
       <path value="$PROJECT_DIR$/proyecto/vendor/symfony/asset" />
       <path value="$PROJECT_DIR$/proyecto/vendor/symfony/translation" />
-      <path value="$PROJECT_DIR$/proyecto/vendor/twig/intl-extra" />
       <path value="$PROJECT_DIR$/proyecto/vendor/symfony/amqp-messenger" />
       <path value="$PROJECT_DIR$/proyecto/vendor/symfony/messenger" />
       <path value="$PROJECT_DIR$/proyecto/vendor/symfony/redis-messenger" />
@@ -107,6 +106,7 @@
       <path value="$PROJECT_DIR$/proyecto/vendor/twig/cssinliner-extra" />
       <path value="$PROJECT_DIR$/proyecto/vendor/tijsverkoyen/css-to-inline-styles" />
       <path value="$PROJECT_DIR$/proyecto/vendor/lorenzo/pinky" />
+      <path value="$PROJECT_DIR$/proyecto/vendor/twig/extra-bundle" />
     </include_path>
   </component>
   <component name="PhpInterpreters">

@@ -111,6 +111,9 @@
     "symfony/amqp-messenger": {
         "version": "v5.2.0"
     },
+    "symfony/asset": {
+        "version": "v5.2.0"
+    },
     "symfony/cache": {
         "version": "v5.2.0"
     },
@@ -131,6 +134,9 @@
         "files": [
             "bin/console"
         ]
+    },
+    "symfony/css-selector": {
+        "version": "v5.2.0"
     },
     "symfony/dependency-injection": {
         "version": "v5.2.0"
@@ -314,6 +320,15 @@
     },
     "symfony/yaml": {
         "version": "v5.2.0"
+    },
+    "tijsverkoyen/css-to-inline-styles": {
+        "version": "2.2.3"
+    },
+    "twig/cssinliner-extra": {
+        "version": "v3.1.1"
+    },
+    "twig/extra-bundle": {
+        "version": "v3.1.1"
     },
     "twig/twig": {
         "version": "v3.1.1"

@@ -11,7 +11,14 @@
     <hr class="black">
     <br>
 
-    <table>
+    {% if items|length == 0 %}
+
+    <h3 class="centerText">{{ 'There are no items for'|trans }} {{ app.user }}, 
+    {{ 'add'|trans }} <a href="{{ path('new-item') }}">{{ 'some'|trans }}</a></h3>
+
+    {% else %}
+
+        <table>
 
         <tr>
             <th>{{ 'Title'|trans }}</th>
@@ -31,6 +38,8 @@
             </tr>
         {% endfor %}
 
-    </table>
+        </table>
+
+    {% endif %}
 
 {% endblock %}

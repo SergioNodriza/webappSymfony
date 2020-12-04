@@ -137,6 +137,14 @@
         <source>User not found or unactivated</source>
         <target>Usuario no encontrado o no activado</target>
       </trans-unit>
+      <trans-unit id="fp5aww8" resname="add">
+        <source>add</source>
+        <target>añade</target>
+      </trans-unit>
+      <trans-unit id="prRt0NG" resname="some">
+        <source>some</source>
+        <target>alguno</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

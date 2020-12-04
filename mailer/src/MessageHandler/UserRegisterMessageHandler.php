@@ -30,6 +30,7 @@ class UserRegisterMessageHandler implements MessageHandlerInterface
     {
         $payload = [
             'name' => $message->getName(),
+            'id' => $message->getId(),
             'url' => \sprintf(
                 '%s%s/%s?%s',
                 $this->host,
