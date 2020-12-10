@@ -28,6 +28,7 @@ class UserRegisterMessageHandler implements MessageHandlerInterface
      */
     public function __invoke(UserRegisterMessage $message): void
     {
+
         $payload = [
             'name' => $message->getName(),
             'id' => $message->getId(),
@@ -49,6 +50,10 @@ class UserRegisterMessageHandler implements MessageHandlerInterface
             )
         ];
 
-        $this->mailerService->send($this->mailerDefaultSender, $message->getId(),TwigTemplate::USER_REGISTER, $payload);
+        if ($message->getState() == 'spam') {
+            $this->mailerService->sendSpammed($this->mailerDefaultSender, TwigTemplate::USER_REGISTER_EMAIL_SPAM, $payload);
+        } else {
+            $this->mailerService->send($this->mailerDefaultSender,TwigTemplate::USER_REGISTER_EMAIL, $payload);
+        }
     }
 }

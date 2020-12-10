@@ -46,13 +46,22 @@ class RegisterController extends AbstractController
 
             $user->setPassword($userPasswordEncoder->encodePassword($user, $form['password']->getData()));
             $user->setState("registered");
-            $result = $this->register->register($user);
+
+            $context = [
+                'user_ip' => $request->getClientIp(),
+                'user_agent' => $request->headers->get('user_agent'),
+                'referrer' => $request->headers->get('referrer'),
+                'permalink' => $request->getUri(),
+            ];
+
+            $result = $this->register->register($user, $context);
             $name = $user->getUsername();
 
             if ($result) {
                 $message = $this->translator->trans(FlashMessage::REGISTER_OK);
                 $this->addFlash('success', $message);
                 return $this->redirectToRoute('app_login', ['new' => $name]);
+
             } else {
 
                 $message = $this->translator->trans(FlashMessage::REGISTER_FAIL);
@@ -79,7 +88,7 @@ class RegisterController extends AbstractController
         $user = $userRepository->findOneBy(['id' => $id]);
 
         if ($user == null) {
-            return new Response("User not found");
+            return new Response($this->translator->trans('User not found'));
         }
 
         $result = $this->register->activate($transition, $user);

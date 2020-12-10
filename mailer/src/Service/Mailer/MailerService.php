@@ -5,6 +5,7 @@ namespace Mailer\Service\Mailer;
 use Exception;
 use Mailer\Templating\TwigTemplate;
 use Psr\Log\LoggerInterface;
+use Symfony\Bridge\Twig\Mime\NotificationEmail;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
@@ -14,32 +15,65 @@ class MailerService
 {
 
     private MailerInterface $mailer;
-    private Environment $engine;
+    private Environment $twig;
     private LoggerInterface $logger;
     private string $mailerDefaultSender;
 
-    public function __construct(MailerInterface $mailer, Environment $engine, LoggerInterface $logger, string $mailerDefaultSender)
+    public function __construct(MailerInterface $mailer, Environment $twig, LoggerInterface $logger, string $mailerDefaultSender)
     {
         $this->mailer = $mailer;
-        $this->engine = $engine;
+        $this->twig = $twig;
         $this->logger = $logger;
         $this->mailerDefaultSender = $mailerDefaultSender;
     }
 
     /**
      * @param string $receiver
-     * @param string $id
      * @param string $template
      * @param array $payload
      * @throws Exception
      */
-    public function send(string $receiver, string $id, string $template, array $payload): void
+    public function send(string $receiver, string $template, array $payload): void
     {
-        $email = (new Email())
+        $email = (new NotificationEmail())
+            ->subject('User: ' . $payload['id'])
+            ->htmlTemplate($template)
             ->from($this->mailerDefaultSender)
             ->to($receiver)
-            ->subject('User: ' . $id)
-            ->html($this->engine->render($template, $payload));
+            ->context(['importance' => NotificationEmail::IMPORTANCE_LOW,
+                        'id' => $payload['id'],
+                        'name' => $payload['name'],
+                        'state' => $payload['state'],
+                        'urlActivate' => $payload['urlActivate'],
+                        'urlReject_inactive' => $payload['urlReject_inactive']
+            ])
+        ;
+
+        try {
+            $this->mailer->send($email);
+        } catch (TransportExceptionInterface $e) {
+            $this->logger->error(\sprintf('Error sending email: %s', $e->getMessage()));
+        }
+    }
+
+    /**
+     * @param string $receiver
+     * @param string $template
+     * @param array $payload
+     */
+    public function sendSpammed(string $receiver, string $template, array $payload): void
+    {
+        $email = (new NotificationEmail())
+            ->subject('User: ' . $payload['id'])
+            ->htmlTemplate($template)
+            ->from($this->mailerDefaultSender)
+            ->to($receiver)
+            ->context(['importance' => NotificationEmail::IMPORTANCE_LOW,
+                'id' => $payload['id'],
+                'name' => $payload['name'],
+                'state' => $payload['state']
+            ])
+        ;
 
         try {
             $this->mailer->send($email);

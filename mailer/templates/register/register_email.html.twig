@@ -1,0 +1,24 @@
+{% extends '@email/default/notification/body.html.twig' %}
+
+{%  block content %}
+
+    <h2 style="text-align: center">Mailer - Web App</h2>
+    <hr>
+    <br>
+
+    Id: {{ id }}<br />
+    Name: {{ name }}<br />
+    State: {{ state }}<br />
+
+{%  endblock %}
+
+{% block action %}
+
+    <br>
+    <div style="display: inline-block">
+        <button style="text-align: left; display: inline-block" href="{{ urlActivate }}">Activate/Deactivate</button>
+        <div style="display: inline-block"></div>
+        <button style="display: inline-block; float: right; text-align: right" href="{{ urlReject_inactive }}">Reject Inactive</button>
+    </div>
+
+{% endblock %}

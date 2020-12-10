@@ -9,28 +9,38 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Messenger\Bridge\Amqp\Transport\AmqpStamp;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Workflow\WorkflowInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class Register
 {
     private EntityManagerInterface $entityManager;
     private MessageBusInterface $bus;
     private WorkflowInterface $workflow;
+    private TranslatorInterface $translator;
+    private SpamChecker $spamChecker;
 
-    public function __construct(EntityManagerInterface $entityManager, MessageBusInterface $bus, WorkflowInterface $userStateMachine)
+    public function __construct(EntityManagerInterface $entityManager, MessageBusInterface $bus,
+                                WorkflowInterface $userStateMachine, TranslatorInterface $translator, SpamChecker $spamChecker)
     {
         $this->entityManager = $entityManager;
         $this->bus = $bus;
         $this->workflow = $userStateMachine;
+        $this->translator = $translator;
+        $this->spamChecker = $spamChecker;
     }
 
-    public function register(User $user)
+    public function register(User $user, array $context)
     {
         try {
             $this->entityManager->persist($user);
-            //$this->entityManager->flush();
 
-            //SpamChecker
-            $this->workflow->apply($user, 'accept');
+            $score = $this->spamChecker->getSpamScore($user, $context);
+            $transition = 'accept';
+            if (2 === $score) {
+                $transition = 'reject';
+            }
+
+            $this->workflow->apply($user, $transition);
             $this->entityManager->flush();
 
             $this->bus->dispatch(
@@ -70,7 +80,7 @@ class Register
 
             $statePost = $user->getState();
             return [
-                'info' => 'Applied workflow',
+                'info' => $this->translator->trans('Applied workflow'),
                 'transition' => $transition,
                 'state' => $statePost
             ];
@@ -82,7 +92,7 @@ class Register
 
             $statePost = $user->getState();
             return [
-                'info' => 'User rejected',
+                'info' => $this->translator->trans('User rejected'),
                 'transition' => $transition,
                 'state' => $statePost
             ];
@@ -90,7 +100,7 @@ class Register
         } else if (($state == 'spam') && $transition == 'reject_inactive') {
 
             return [
-                'info' => 'Already in this workflow',
+                'info' => $this->translator->trans('Already in this workflow'),
                 'transition' => $transition,
                 'state' => $state
             ];
@@ -99,7 +109,7 @@ class Register
 
             $statePost = $user->getState();
             return [
-                'info' => 'Error, cant apply this workflow',
+                'info' => $this->translator->trans('Error, cant apply this workflow'),
                 'transition' => $transition,
                 'state' => $statePost
             ];

@@ -6,5 +6,6 @@ namespace Mailer\Templating;
 
 abstract class TwigTemplate
 {
-    public const USER_REGISTER = 'register/register.html.twig';
+    public const USER_REGISTER_EMAIL_SPAM = 'register/register_email_spammed.html.twig';
+    public const USER_REGISTER_EMAIL = 'register/register_email.html.twig';
 }

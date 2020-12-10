@@ -123,3 +123,10 @@ button {
     cursor: pointer;
     background-color: #333;
 }
+
+.box {
+    display: flex;
+}
+.push {
+    margin-left: auto;
+}

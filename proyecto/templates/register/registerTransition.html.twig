@@ -1,4 +1,4 @@
-{% extends 'baseTransaction.html.twig' %}
+{% extends 'baseTransition.html.twig' %}
 
 {% block body %}
 
@@ -11,8 +11,8 @@
 
         <table class="Transaction">
             <tr>
-                <th class="Transaction">Transition</th>
-                <th class="Transaction">State</th>
+                <th class="Transaction">{{ 'Transition'|trans }}</th>
+                <th class="Transaction">{{ 'State'|trans }}</th>
             </tr>
             <tr>
                 <td>{{ result.transition }}</td>

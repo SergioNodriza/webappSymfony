@@ -145,6 +145,34 @@
         <source>some</source>
         <target>alguno</target>
       </trans-unit>
+      <trans-unit id="mwFu3AP" resname="Applied workflow">
+        <source>Applied workflow</source>
+        <target>Workflow Aplicado</target>
+      </trans-unit>
+      <trans-unit id="cFfW9xp" resname="User rejected">
+        <source>User rejected</source>
+        <target>Usuario Rechazado</target>
+      </trans-unit>
+      <trans-unit id="rQ5alsp" resname="Already in this workflow">
+        <source>Already in this workflow</source>
+        <target>Ya está en este Workflow</target>
+      </trans-unit>
+      <trans-unit id="n4idXjf" resname="Error, cant apply this workflow">
+        <source>Error, cant apply this workflow</source>
+        <target>Error, no se puede aplicar este Workflow</target>
+      </trans-unit>
+      <trans-unit id="L_cEZKr" resname="Transition">
+        <source>Transition</source>
+        <target>Transición</target>
+      </trans-unit>
+      <trans-unit id="o7UMR2c" resname="State">
+        <source>State</source>
+        <target>Estado</target>
+      </trans-unit>
+      <trans-unit id="SheT6ZA" resname="User not found">
+        <source>User not found</source>
+        <target>Usuario no Encontrado</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
