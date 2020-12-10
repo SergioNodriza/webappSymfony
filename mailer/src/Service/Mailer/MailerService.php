@@ -40,39 +40,13 @@ class MailerService
             ->htmlTemplate($template)
             ->from($this->mailerDefaultSender)
             ->to($receiver)
-            ->context(['importance' => NotificationEmail::IMPORTANCE_LOW,
-                        'id' => $payload['id'],
-                        'name' => $payload['name'],
-                        'state' => $payload['state'],
-                        'urlActivate' => $payload['urlActivate'],
-                        'urlReject_inactive' => $payload['urlReject_inactive']
-            ])
-        ;
-
-        try {
-            $this->mailer->send($email);
-        } catch (TransportExceptionInterface $e) {
-            $this->logger->error(\sprintf('Error sending email: %s', $e->getMessage()));
-        }
-    }
-
-    /**
-     * @param string $receiver
-     * @param string $template
-     * @param array $payload
-     */
-    public function sendSpammed(string $receiver, string $template, array $payload): void
-    {
-        $email = (new NotificationEmail())
-            ->subject('User: ' . $payload['id'])
-            ->htmlTemplate($template)
-            ->from($this->mailerDefaultSender)
-            ->to($receiver)
-            ->context(['importance' => NotificationEmail::IMPORTANCE_LOW,
+            ->context([
                 'id' => $payload['id'],
                 'name' => $payload['name'],
-                'state' => $payload['state']
+                'state' => $payload['state'],
+                'url' => $payload['url']
             ])
+            ->importance(NotificationEmail::IMPORTANCE_LOW);
         ;
 
         try {

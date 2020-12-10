@@ -61,31 +61,36 @@ class Register
      */
     public function activate(string $transition, User $user)
     {
-
         $state = $user->getState();
 
-        if ($transition == 'active' && $state != 'spam') {
+        if ($this->workflow->can($user, 'deactivate') && $transition == 'deactivate') {
 
-            if ($this->workflow->can($user, 'deactivate')) {
-
-                $transition = 'deactivate';
-                $this->workflow->apply($user, 'deactivate');
-                $this->entityManager->flush();
-
-            } else if ($this->workflow->can($user, 'activate')) {
-
-                $this->workflow->apply($user, 'activate');
-                $this->entityManager->flush();
-            }
+            $this->workflow->apply($user, 'deactivate');
+            $this->entityManager->flush();
 
             $statePost = $user->getState();
             return [
                 'info' => $this->translator->trans('Applied workflow'),
                 'transition' => $transition,
-                'state' => $statePost
+                'state' => $statePost,
+                'id' => $user->getId()
             ];
 
-        } else if ($this->workflow->can($user, 'reject_inactive') && $transition == 'reject_inactive') {
+        } else if ($this->workflow->can($user, 'activate') && $transition == 'activate') {
+
+            $this->workflow->apply($user, 'activate');
+            $this->entityManager->flush();
+
+            $statePost = $user->getState();
+            return [
+                'info' => $this->translator->trans('Applied workflow'),
+                'transition' => $transition,
+                'state' => $statePost,
+                'id' => $user->getId()
+            ];
+        }
+
+        if ($this->workflow->can($user, 'reject_inactive') && $transition == 'reject') {
 
             $this->workflow->apply($user, 'reject_inactive');
             $this->entityManager->flush();
@@ -94,15 +99,17 @@ class Register
             return [
                 'info' => $this->translator->trans('User rejected'),
                 'transition' => $transition,
-                'state' => $statePost
+                'state' => $statePost,
+                'id' => $user->getId()
             ];
 
-        } else if (($state == 'spam') && $transition == 'reject_inactive') {
+        } else if ($state == 'spam' && $transition == 'reject') {
 
             return [
                 'info' => $this->translator->trans('Already in this workflow'),
                 'transition' => $transition,
-                'state' => $state
+                'state' => $state,
+                'id' => $user->getId()
             ];
 
         } else {
@@ -111,7 +118,8 @@ class Register
             return [
                 'info' => $this->translator->trans('Error, cant apply this workflow'),
                 'transition' => $transition,
-                'state' => $statePost
+                'state' => $statePost,
+                'id' => $user->getId()
             ];
         }
     }

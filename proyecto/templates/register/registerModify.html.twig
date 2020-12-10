@@ -4,7 +4,7 @@
 
     <div class="centerText">
 
-        <h1>{{ result.info }}</h1>
+        <h1>{{ 'Information of'|trans }} {{ id }}</h1>
 
         <hr class="black">
         <br>
@@ -12,13 +12,11 @@
         <table class="Transaction">
             <tr>
                 <th class="Transaction">Id</th>
-                <th class="Transaction">{{ 'Transition'|trans }}</th>
                 <th class="Transaction">{{ 'State'|trans }}</th>
             </tr>
             <tr>
-                <td>{{ result.id }}</td>
-                <td>{{ result.transition }}</td>
-                <td>{{ result.state }}</td>
+                <td>{{ id }}</td>
+                <td>{{ state }}</td>
             </tr>
         </table>
 

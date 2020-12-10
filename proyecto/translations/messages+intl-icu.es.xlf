@@ -173,6 +173,22 @@
         <source>User not found</source>
         <target>Usuario no Encontrado</target>
       </trans-unit>
+      <trans-unit id="vB3A6Gy" resname="Information of">
+        <source>Information of</source>
+        <target>Información de</target>
+      </trans-unit>
+      <trans-unit id="JEM8cOu" resname="Activate">
+        <source>Activate</source>
+        <target>Activar</target>
+      </trans-unit>
+      <trans-unit id="q2BKNgd" resname="Reject">
+        <source>Reject</source>
+        <target>Rechazar</target>
+      </trans-unit>
+      <trans-unit id="_x5vpVM" resname="Deactivate">
+        <source>Deactivate</source>
+        <target>Desactivar</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -4,7 +4,54 @@
     </div>
 
     <div class="navbar">
-        <a class="right" style="visibility: hidden">{{ 'LogOut'|trans }}</a>
+
+        {% if result is defined %}
+
+            {% if result.state == "inactive" %}
+                <a class="right" href="{{ path('modifyRegister', {id: result.id, state: 'activate'}) }}">{{ 'Activate'|trans }}</a>
+                <a href="{{ path('modifyRegister', {id: result.id, state: 'reject'}) }}">{{ 'Reject'|trans }}</a>
+            {% elseif result.state == "active" %}
+                <a class="right" href="{{ path('modifyRegister', {id: result.id, state: 'deactivate'}) }}">{{ 'Deactivate'|trans }}</a>
+            {% else %}
+                <a style="visibility: hidden">X</a>
+            {% endif %}
+
+
+            {% if app.request.locale == 'en'%}
+                <a class="right" style="visibility: hidden">Activate</a>
+                <a href="{{ path('modifyRegister', {id: result.id, locale: 'en'}) }}" class="right active" id="toEN">EN</a>
+                <a href="{{ path('modifyRegister', {id: result.id, locale: 'es'}) }}" class="right" id="toEN">ES</a>
+            {% else %}
+                <a class="right" style="visibility: hidden">'Deactivate'</a>
+                <a href="{{ path('modifyRegister', {id: result.id, locale: 'en'}) }}" class="right" id="toEN">EN</a>
+                <a href="{{ path('modifyRegister', {id: result.id, locale: 'es'}) }}" class="right active" id="toEN">ES</a>
+            {% endif %}
+
+
+        {% else %}
+
+            {% if state == "inactive" %}
+                <a class="right" href="{{ path('modifyRegister', {id: id, state: 'activate'}) }}">{{ 'Activate'|trans }}</a>
+                <a href="{{ path('modifyRegister', {id: id, state: 'reject'}) }}">{{ 'Reject'|trans }}</a>
+            {% elseif state == "active" %}
+                <a class="right" href="{{ path('modifyRegister', {id: id, state: 'deactivate'}) }}">{{ 'Deactivate'|trans }}</a>
+            {% else %}
+                <a style="visibility: hidden">X</a>
+            {% endif %}
+
+
+            {% if app.request.locale == 'en'%}
+                <a class="right" style="visibility: hidden">Activate</a>
+                <a href="{{ app.request.uri|replace({'es': "en"}) }}" class="right active" id="toEN">EN</a>
+                <a href="{{ app.request.uri|replace({'en': "es"}) }}" class="right" id="toEN">ES</a>
+            {% else %}
+                <a class="right" style="visibility: hidden">Deactivate</a>
+                <a href="{{ app.request.uri|replace({'es': "en"}) }}" class="right" id="toEN">EN</a>
+                <a href="{{ app.request.uri|replace({'en': "es"}) }}" class="right active" id="toEN">ES</a>
+            {% endif %}
+
+        {% endif %}
+
     </div>
 
 {% endblock %}

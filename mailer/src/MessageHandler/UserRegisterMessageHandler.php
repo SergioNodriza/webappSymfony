@@ -34,24 +34,16 @@ class UserRegisterMessageHandler implements MessageHandlerInterface
             'id' => $message->getId(),
             'state' => $message->getState(),
 
-            'urlActivate' => \sprintf(
-                '%s%s/%s?%s',
+            'url' => \sprintf(
+                '%s%s/%s',
                 $this->host,
                 ClientRoute::ACTIVATE_ACCOUNT,
-                $message->getId(),
-                "state=active"
-            ),
-            'urlReject_inactive' => \sprintf(
-                '%s%s/%s?%s',
-                $this->host,
-                ClientRoute::ACTIVATE_ACCOUNT,
-                $message->getId(),
-                "state=reject_inactive"
+                $message->getId()
             )
         ];
 
         if ($message->getState() == 'spam') {
-            $this->mailerService->sendSpammed($this->mailerDefaultSender, TwigTemplate::USER_REGISTER_EMAIL_SPAM, $payload);
+            $this->mailerService->send($this->mailerDefaultSender, TwigTemplate::USER_REGISTER_EMAIL_SPAM, $payload);
         } else {
             $this->mailerService->send($this->mailerDefaultSender,TwigTemplate::USER_REGISTER_EMAIL, $payload);
         }

@@ -76,7 +76,7 @@ class RegisterController extends AbstractController
     }
 
     /**
-     * @Route("/{_locale<%app.supported_locales%>}/register/state/{id}", name="activateRegister")
+     * @Route("/{_locale<%app.supported_locales%>}/register/state/{id}", name="modifyRegister")
      * @param Request $request
      * @param string $id
      * @param UserRepository $userRepository
@@ -91,7 +91,14 @@ class RegisterController extends AbstractController
             return new Response($this->translator->trans('User not found'));
         }
 
-        $result = $this->register->activate($transition, $user);
-        return $this->render('register/registerTransition.html.twig', compact('result'));
+        if ($transition !== null) {
+            $result = $this->register->activate($transition, $user);
+            return $this->render('register/registerTransition.html.twig', compact('result'));
+        }
+
+        return $this->render('register/registerModify.html.twig', [
+            'id' => $id,
+            'state' => $user->getState()
+        ]);
     }
 }
