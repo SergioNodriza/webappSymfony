@@ -11,6 +11,9 @@ parameters:
     router.request_context.host: '%env(default:default_domain:SYMFONY_DEFAULT_ROUTE_HOST)%'
     router.request_context.scheme: '%env(default:default_scheme:SYMFONY_DEFAULT_ROUTE_SCHEME)%'
 
+imports:
+    - { resource: api_platform/filters/search-filter.yaml }
+
 services:
     # default configuration for services in *this* file
     _defaults:

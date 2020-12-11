@@ -1,0 +1,11 @@
+services:
+  app.custom.search_filter:
+    parent: 'api_platform.doctrine.orm.search_filter'
+    arguments:
+      -
+        state: exact
+        user: exact
+    tags:
+      - { name: 'api_platform.filter', id: 'app.custom.search_filter' }
+    autowire: false
+    autoconfigure: false

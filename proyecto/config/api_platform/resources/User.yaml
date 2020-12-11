@@ -1,0 +1,15 @@
+App\Entity\User:
+
+  collectionOperations:
+    get:
+      filters: [app.custom.search_filter]
+
+  itemOperations:
+    get: ~
+
+  properties:
+    items:
+      subresource:
+        resourceClass: App\Entity\Item
+        collection: true
+        maxDepth: 1

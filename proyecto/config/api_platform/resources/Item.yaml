@@ -1,0 +1,9 @@
+App\Entity\Item:
+
+  collectionOperations:
+    get:
+      filters: [app.custom.search_filter]
+
+  itemOperations:
+    get: ~
+
