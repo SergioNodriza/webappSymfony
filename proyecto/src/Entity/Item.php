@@ -2,11 +2,18 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ItemRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ItemRepository::class)
+ * @ApiResource(
+ *     collectionOperations={"get"={"normalization_context"={"groups"="conference:list"}}},
+ *     itemOperations={"get"={"normalization_context"={"groups"="conference:item"}}},
+ *     paginationEnabled=false
+ * )
  */
 class Item
 {
@@ -14,26 +21,31 @@ class Item
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"conference:list", "conference:item"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"conference:list", "conference:item"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
+     * @Groups({"conference:list", "conference:item"})
      */
     private $done;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"conference:list", "conference:item"})
      */
     private $createdAt;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="items", cascade={"persist"})
+     * @Groups({"conference:list", "conference:item"})
      */
     private $user;
 
