@@ -3,13 +3,12 @@
 namespace Mailer\Service\Mailer;
 
 use Exception;
-use Mailer\Templating\TwigTemplate;
 use Psr\Log\LoggerInterface;
 use Symfony\Bridge\Twig\Mime\NotificationEmail;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Email;
 use Twig\Environment;
+use function sprintf;
 
 class MailerService
 {
@@ -47,12 +46,11 @@ class MailerService
                 'url' => $payload['url']
             ])
             ->importance(NotificationEmail::IMPORTANCE_LOW);
-        ;
 
         try {
             $this->mailer->send($email);
         } catch (TransportExceptionInterface $e) {
-            $this->logger->error(\sprintf('Error sending email: %s', $e->getMessage()));
+            $this->logger->error(sprintf('Error sending email: %s', $e->getMessage()));
         }
     }
 }

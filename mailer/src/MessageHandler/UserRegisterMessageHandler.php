@@ -8,6 +8,7 @@ use Mailer\Service\Mailer\ClientRoute;
 use Mailer\Service\Mailer\MailerService;
 use Mailer\Templating\TwigTemplate;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
+use function sprintf;
 
 class UserRegisterMessageHandler implements MessageHandlerInterface
 {
@@ -34,7 +35,7 @@ class UserRegisterMessageHandler implements MessageHandlerInterface
             'id' => $message->getId(),
             'state' => $message->getState(),
 
-            'url' => \sprintf(
+            'url' => sprintf(
                 '%s%s/%s',
                 $this->host,
                 ClientRoute::ACTIVATE_ACCOUNT,

@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use App\Entity\User;
+use RuntimeException;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class SpamChecker
@@ -24,6 +25,7 @@ class SpamChecker
             'body' => array_merge($context, [
                 'blog' => 'https://webapp.example.com',
                 'user_type' => 'user',
+                'user_name' => $user->getName(),
                 'app_lang' => 'en',
                 'blog_charset' => 'UTF-8',
                 'is_test' => true,
@@ -37,7 +39,7 @@ class SpamChecker
 
         $content = $response->getContent();
         if (isset($headers['x-akismet-debug-help'][0])) {
-            throw new \RuntimeException(sprintf('Unable to check for spam: %s (%s).', $content, $headers['x-akismet-debug-help'][0]));
+            throw new RuntimeException(sprintf('Unable to check for spam: %s (%s).', $content, $headers['x-akismet-debug-help'][0]));
         }
 
         return 'true' === $content ? 1 : 0;

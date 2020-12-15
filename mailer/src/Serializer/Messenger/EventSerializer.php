@@ -7,6 +7,7 @@ namespace Mailer\Serializer\Messenger;
 use Mailer\Message\UserRegisterMessage;
 use Symfony\Component\Messenger\Envelope;
 use Symfony\Component\Messenger\Transport\Serialization\Serializer;
+use function array_key_exists;
 
 class EventSerializer extends Serializer
 {
@@ -24,7 +25,7 @@ class EventSerializer extends Serializer
     {
         $map = ['App\Message\UserRegisterMessage' => UserRegisterMessage::class];
 
-        if (\array_key_exists($type, $map)) {
+        if (array_key_exists($type, $map)) {
             return $map[$type];
         }
         return $type;

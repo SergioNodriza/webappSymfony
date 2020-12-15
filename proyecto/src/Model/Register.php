@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Message\RoutingKey;
 use App\Message\UserRegisterMessage;
 use Doctrine\ORM\EntityManagerInterface;
+use Exception;
 use Symfony\Component\Messenger\Bridge\Amqp\Transport\AmqpStamp;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Workflow\WorkflowInterface;
@@ -36,7 +37,7 @@ class Register
 
             $score = $this->spamChecker->getSpamScore($user, $context);
             $transition = 'accept';
-            if (2 === $score) {
+            if (SpamChecker::SPAMMER === $score) {
                 $transition = 'reject';
             }
 
@@ -49,7 +50,7 @@ class Register
             );
             return true;
 
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             return false;
         }
     }

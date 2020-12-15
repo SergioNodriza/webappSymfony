@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Item;
 use App\Form\ItemType;
 use App\Model\FlashMessage;
 use App\Model\ListItem;
