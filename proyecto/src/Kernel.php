@@ -35,4 +35,9 @@ class Kernel extends BaseKernel
             (require $path)($routes->withPath($path), $this);
         }
     }
+
+    public function getBuildDir(): string
+    {
+        return $this->getProjectDir().'/var/build/'.$this->environment;
+    }
 }

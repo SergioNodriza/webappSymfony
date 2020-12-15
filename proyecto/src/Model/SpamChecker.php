@@ -21,6 +21,7 @@ class SpamChecker
 
     public function getSpamScore(User $user, array $context): int
     {
+        try {
         $response = $this->client->request('POST', $this->endpoint, [
             'body' => array_merge($context, [
                 'blog' => 'https://webapp.example.com',
@@ -43,5 +44,8 @@ class SpamChecker
         }
 
         return 'true' === $content ? 1 : 0;
+        } catch (\Exception $exception) {
+            return 3;
+        }
     }
 }

@@ -14,6 +14,8 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 class Register
 {
+    const SPAM = 2;
+
     private EntityManagerInterface $entityManager;
     private MessageBusInterface $bus;
     private WorkflowInterface $workflow;
@@ -37,7 +39,7 @@ class Register
 
             $score = $this->spamChecker->getSpamScore($user, $context);
             $transition = 'accept';
-            if (SpamChecker::SPAMMER === $score) {
+            if (Register::SPAM === $score) {
                 $transition = 'reject';
             }
 
