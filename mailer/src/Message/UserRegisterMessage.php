@@ -7,12 +7,14 @@ class UserRegisterMessage
     private string $id;
     private string $name;
     private string $state;
+    private ?string $info;
 
-    public function __construct(string $id, string $name, string $state)
+    public function __construct(string $id, string $name, string $state, ?string $info = null)
     {
         $this->id = $id;
         $this->name = $name;
         $this->state = $state;
+        $this->info = $info;
     }
 
     /**
@@ -37,5 +39,13 @@ class UserRegisterMessage
     public function getState(): string
     {
         return $this->state;
+    }
+
+    /**
+     * @return string
+     */
+    public function getInfo(): ?string
+    {
+        return $this->info;
     }
 }

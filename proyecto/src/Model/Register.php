@@ -66,10 +66,17 @@ class Register
             $this->workflow->apply($user, $transition);
             $this->entityManager->flush();
 
-            $this->bus->dispatch(
-                new UserRegisterMessage($user->getId(), $user->getName(), $user->getState()),
-                [new AmqpStamp(RoutingKey::USER_QUEUE)]
-            );
+            if ($this->result == self::SPAM_CHECKER_EXCEPTION) {
+                $this->bus->dispatch(
+                    new UserRegisterMessage($user->getId(), $user->getName(), $user->getState(), "Registered while SpamChecker Error"),
+                    [new AmqpStamp(RoutingKey::USER_QUEUE)]
+                );
+            } else {
+                $this->bus->dispatch(
+                    new UserRegisterMessage($user->getId(), $user->getName(), $user->getState()),
+                    [new AmqpStamp(RoutingKey::USER_QUEUE)]
+                );
+            }
 
         } catch (Exception $exception) {
             $this->result = self::GENERAL_EXCEPTION;

@@ -3,6 +3,7 @@
 namespace Mailer\Service\Mailer;
 
 use Exception;
+use Mailer\Templating\TwigTemplate;
 use Psr\Log\LoggerInterface;
 use Symfony\Bridge\Twig\Mime\NotificationEmail;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
@@ -27,25 +28,26 @@ class MailerService
     }
 
     /**
+     * @param string $subject
      * @param string $receiver
-     * @param string $template
      * @param array $payload
-     * @throws Exception
+     * @param string $importance
      */
-    public function send(string $receiver, string $template, array $payload): void
+    public function send(string $subject, string $receiver, array $payload, string $importance): void
     {
         $email = (new NotificationEmail())
-            ->subject('User: ' . $payload['id'])
-            ->htmlTemplate($template)
+            ->subject($subject)
+            ->htmlTemplate(TwigTemplate::USER_REGISTER_EMAIL)
             ->from($this->mailerDefaultSender)
             ->to($receiver)
             ->context([
                 'id' => $payload['id'],
                 'name' => $payload['name'],
                 'state' => $payload['state'],
+                'info' => $payload['info'],
                 'url' => $payload['url']
             ])
-            ->importance(NotificationEmail::IMPORTANCE_LOW);
+            ->importance($importance);
 
         try {
             $this->mailer->send($email);

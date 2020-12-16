@@ -10,11 +10,17 @@
     Name: {{ name }}<br />
     State: {{ state }}<br />
 
+    {% if info is not null %}
+        Info: {{ info }}<br />
+    {% endif %}
+
 {%  endblock %}
 
 {% block action %}
 
-    <br>
-    <button style="text-align: left; display: inline-block" href="{{ url }}">Modify</button>
+    {% if state != 'spam' %}
+        <br>
+        <button style="text-align: left; display: inline-block" href="{{ url }}">Modify</button>
+    {% endif %}
 
 {% endblock %}
