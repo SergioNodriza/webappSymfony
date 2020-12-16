@@ -48,7 +48,6 @@ class Register
             $this->entityManager->persist($user);
 
             $score = $this->spamChecker->getSpamScore($user, $context);
-            $score = 3;
 
             switch ($score) {
                 case Register::SPAM:
