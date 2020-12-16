@@ -14,13 +14,17 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 class Register
 {
+    const OK = 1;
     const SPAM = 2;
+    const SPAM_CHECKER_EXCEPTION = 3;
+    const GENERAL_EXCEPTION = 4;
 
     private EntityManagerInterface $entityManager;
     private MessageBusInterface $bus;
     private WorkflowInterface $workflow;
     private TranslatorInterface $translator;
     private SpamChecker $spamChecker;
+    private int $result;
 
     public function __construct(EntityManagerInterface $entityManager, MessageBusInterface $bus,
                                 WorkflowInterface $userStateMachine, TranslatorInterface $translator, SpamChecker $spamChecker)
@@ -30,17 +34,34 @@ class Register
         $this->workflow = $userStateMachine;
         $this->translator = $translator;
         $this->spamChecker = $spamChecker;
+        $this->result = self::OK;
     }
 
+    /**
+     * @param User $user
+     * @param array $context
+     * @return int
+     */
     public function register(User $user, array $context)
     {
         try {
             $this->entityManager->persist($user);
 
             $score = $this->spamChecker->getSpamScore($user, $context);
-            $transition = 'accept';
-            if (Register::SPAM === $score) {
-                $transition = 'reject';
+            $score = 3;
+
+            switch ($score) {
+                case Register::SPAM:
+                    $transition = 'reject';
+                    $this->result = self::SPAM;
+                    break;
+                case Register::SPAM_CHECKER_EXCEPTION:
+                    $transition = 'accept';
+                    $this->result = self::SPAM_CHECKER_EXCEPTION;
+                    break;
+                default:
+                    $transition = 'accept';
+                    break;
             }
 
             $this->workflow->apply($user, $transition);
@@ -50,11 +71,12 @@ class Register
                 new UserRegisterMessage($user->getId(), $user->getName(), $user->getState()),
                 [new AmqpStamp(RoutingKey::USER_QUEUE)]
             );
-            return true;
 
         } catch (Exception $exception) {
-            return false;
+            $this->result = self::GENERAL_EXCEPTION;
         }
+
+        return $this->result;
     }
 
     /**

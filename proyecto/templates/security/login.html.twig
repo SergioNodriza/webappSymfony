@@ -49,10 +49,8 @@
             {% endif %}
 
             {% if error %}
-                <br>
-                <h3>
-                    {{ "User not found or unactivated"|trans }}
-                </h3>
+                <br><br>
+                <div class="alert alert-danger">{{ error.messageKey|trans }}</div>
             {% endif %}
 
         </form>

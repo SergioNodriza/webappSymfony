@@ -4,10 +4,15 @@ namespace App\Model;
 
 use App\Entity\User;
 use RuntimeException;
+use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
+use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class SpamChecker
 {
+    const SPAM_CHECKER_EXCEPTION = 3;
 
     private HttpClientInterface $client;
     private string $endpoint;
@@ -19,6 +24,11 @@ class SpamChecker
         $this->endpoint = sprintf('https://%s.rest.akismet.com/1.1/comment-check', $akismetKey);
     }
 
+    /**
+     * @param User $user
+     * @param array $context
+     * @return int
+     */
     public function getSpamScore(User $user, array $context): int
     {
         try {
@@ -44,8 +54,15 @@ class SpamChecker
         }
 
         return 'true' === $content ? 1 : 0;
-        } catch (\Exception $exception) {
-            return 3;
+
+        } catch (TransportExceptionInterface $e) {
+            return self::SPAM_CHECKER_EXCEPTION;
+        } catch (ClientExceptionInterface $e) {
+            return self::SPAM_CHECKER_EXCEPTION;
+        } catch (RedirectionExceptionInterface $e) {
+            return self::SPAM_CHECKER_EXCEPTION;
+        } catch (ServerExceptionInterface $e) {
+            return self::SPAM_CHECKER_EXCEPTION;
         }
     }
 }

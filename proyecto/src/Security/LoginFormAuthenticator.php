@@ -3,6 +3,7 @@
 namespace App\Security;
 
 use App\Entity\User;
+use App\Model\FlashMessage;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -70,13 +71,10 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
             throw new InvalidCsrfTokenException();
         }
 
-        $user = $this->entityManager->getRepository(User::class)->findOneBy(['name' => $credentials['name']]);
-
-        //dd($user);
+        $user = $this->entityManager->getRepository(User::class)->findOneBy(['name' => $credentials['name'], 'state' => 'active']);
 
         if (!$user) {
-            // fail authentication with a custom error
-            throw new CustomUserMessageAuthenticationException('User could not be found.');
+            throw new CustomUserMessageAuthenticationException(FlashMessage::LOGIN_FAIL);
         }
 
         return $user;

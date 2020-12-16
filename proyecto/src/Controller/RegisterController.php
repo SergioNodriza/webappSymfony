@@ -16,6 +16,9 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 class RegisterController extends AbstractController
 {
+    const OK = 1;
+    const SPAM = 2;
+    const SPAM_CHECKER_EXCEPTION = 3;
 
     private Register $register;
     private TranslatorInterface $translator;
@@ -55,18 +58,28 @@ class RegisterController extends AbstractController
             ];
 
             $result = $this->register->register($user, $context);
-            $name = $user->getUsername();
 
-            if ($result) {
-                $message = $this->translator->trans(FlashMessage::REGISTER_OK);
-                $this->addFlash('success', $message);
-                return $this->redirectToRoute('app_login', ['new' => $name]);
+            switch ($result) {
+                case self::OK:
+                    $name = $user->getUsername();
+                    $message = $this->translator->trans(FlashMessage::REGISTER_OK);
+                    $this->addFlash('success', $message);
+                    return $this->redirectToRoute('app_login', ['new' => $name]);
 
-            } else {
+                case self::SPAM:
+                    $message = $this->translator->trans(FlashMessage::REGISTER_SPAM);
+                    $this->addFlash('fail', $message);
+                    return $this->redirectToRoute("register");
 
-                $message = $this->translator->trans(FlashMessage::REGISTER_FAIL);
-                $this->addFlash('fail', $message);
-                return $this->redirectToRoute("register");
+                case self::SPAM_CHECKER_EXCEPTION:
+                    $message = $this->translator->trans(FlashMessage::REGISTER_FAIL_SPAM_CHECKER);
+                    $this->addFlash('fail', $message);
+                    return $this->redirectToRoute("register");
+
+                default:
+                    $message = $this->translator->trans(FlashMessage::REGISTER_FAIL);
+                    $this->addFlash('fail', $message);
+                    return $this->redirectToRoute("register");
             }
         }
 

@@ -109,13 +109,21 @@
         <source>Web App</source>
         <target>Aplicación Web</target>
       </trans-unit>
-      <trans-unit id="6No0X0r" resname="Can not register that user">
-        <source>Can not register that user</source>
-        <target>No se puede registrar ese usuario</target>
+      <trans-unit id="H42WhDY" resname="User already exists">
+        <source>User already exists</source>
+        <target>Ya existe este usuario</target>
       </trans-unit>
       <trans-unit id="vxfcEG1" resname="User Registered, its getting Activated">
         <source>User Registered, its getting Activated</source>
         <target>Usuario Registrado, se está activando</target>
+      </trans-unit>
+      <trans-unit id="cFfW9xp" resname="User rejected">
+        <source>User rejected</source>
+        <target>Usuario rechazado</target>
+      </trans-unit>
+      <trans-unit id="91oCnkP" resname="LogIn, the user will be checked son">
+        <source>LogIn, the user will be checked son</source>
+        <target>Inicia sesión, el usuario se comprobará pronto</target>
       </trans-unit>
       <trans-unit id="sTak4TC" resname="Item Added">
         <source>Item Added</source>
@@ -148,10 +156,6 @@
       <trans-unit id="mwFu3AP" resname="Applied workflow">
         <source>Applied workflow</source>
         <target>Workflow Aplicado</target>
-      </trans-unit>
-      <trans-unit id="cFfW9xp" resname="User rejected">
-        <source>User rejected</source>
-        <target>Usuario Rechazado</target>
       </trans-unit>
       <trans-unit id="rQ5alsp" resname="Already in this workflow">
         <source>Already in this workflow</source>
@@ -188,6 +192,10 @@
       <trans-unit id="_x5vpVM" resname="Deactivate">
         <source>Deactivate</source>
         <target>Desactivar</target>
+      </trans-unit>
+      <trans-unit id="qr0aiUo" resname="Invalid credentials.">
+        <source>Invalid credentials.</source>
+        <target>Credenciales no válidos</target>
       </trans-unit>
     </body>
   </file>
