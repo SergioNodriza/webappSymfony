@@ -50,7 +50,7 @@
 
             {% if error %}
                 <br><br>
-                <div class="alert alert-danger">{{ error.messageKey|trans }}</div>
+                <div class="alert alert-danger" id="errorMessage">{{ error.messageKey|trans }}</div>
             {% endif %}
 
         </form>

@@ -20,7 +20,7 @@ use Webmozart\Assert\Assert;
  *
  * @see http://behat.org/en/latest/quick_start.html
  */
-final class Prueba implements Context
+final class Register implements Context
 {
     private KernelInterface $kernel;
     private UserRepository $userRepository;
@@ -29,7 +29,7 @@ final class Prueba implements Context
     private string $password;
 
     public function __construct(Session $session, KernelInterface $kernel, UserRepository $userRepository,
-                                String $name = "Prueba3", String $password = "123")
+                                string $name = "Prueba3", string $password = "123")
     {
         $this->kernel = $kernel;
         $this->userRepository = $userRepository;
@@ -50,10 +50,10 @@ final class Prueba implements Context
     }
 
     /**
-     * @When I fill in the form
+     * @When I fill in the register form
      * @throws ElementNotFoundException
      */
-    public function iFillInTheForm()
+    public function iFillInTheRegisterForm()
     {
         $this->session->visit("/en/register");
         $page = $this->session->getPage();
@@ -86,11 +86,11 @@ final class Prueba implements Context
         }
     }
 
-    public function error($element) {
-
+    public function error($element)
+    {
         Assert::true($element == FlashMessage::REGISTER_FAIL
-                        || $element == FlashMessage::REGISTER_SPAM
-                        || $element == FlashMessage::REGISTER_FAIL_SPAM_CHECKER);
+            || $element == FlashMessage::REGISTER_SPAM
+            || $element == FlashMessage::REGISTER_FAIL_SPAM_CHECKER);
 
         switch ($element) {
             case FlashMessage::REGISTER_FAIL:
