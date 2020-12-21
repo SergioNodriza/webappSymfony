@@ -2,14 +2,14 @@
     <div class="centerText">
         {% for message in app.flashes('success') %}
             <br>
-            <h3>
+            <h3 id="successMessage">
                 {{ message }}
             </h3>
         {% endfor %}
 
         {% for message in app.flashes('fail') %}
             <br>
-            <h3>
+            <h3 id="errorMessage">
                 {{ message }}
             </h3>
         {% endfor %}

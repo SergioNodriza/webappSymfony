@@ -2,7 +2,6 @@
 
 namespace Mailer\Service\Mailer;
 
-use Exception;
 use Mailer\Templating\TwigTemplate;
 use Psr\Log\LoggerInterface;
 use Symfony\Bridge\Twig\Mime\NotificationEmail;
