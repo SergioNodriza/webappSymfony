@@ -88,7 +88,9 @@ final class Prueba implements Context
 
     public function error($element) {
 
-        Assert::true($element == FlashMessage::REGISTER_FAIL || $element == FlashMessage::REGISTER_SPAM || FlashMessage::REGISTER_FAIL_SPAM_CHECKER);
+        Assert::true($element == FlashMessage::REGISTER_FAIL
+                        || $element == FlashMessage::REGISTER_SPAM
+                        || $element == FlashMessage::REGISTER_FAIL_SPAM_CHECKER);
 
         switch ($element) {
             case FlashMessage::REGISTER_FAIL:
